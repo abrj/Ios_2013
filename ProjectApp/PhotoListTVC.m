@@ -9,13 +9,8 @@
 #import "PhotoListTVC.h"
 #import "FlickrFetcher.h"
 
-@interface PhotoListTVC ()
-
-@property (nonatomic, strong) NSArray *photos;
-@end
 
 @implementation PhotoListTVC
-
 
 - (void)setPhotos:(NSArray *)photos
 {
@@ -23,19 +18,17 @@
     [self.tableView reloadData];
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.photos = [FlickrFetcher stanfordPhotos];
-    NSLog(@"photos from stanford %@", self.photos);
+}
 
-    
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -50,10 +43,9 @@
 
 - (NSString *)titleForRow:(NSUInteger)row
 {
-    //NSDictionary *dic = [self.photos objectAtIndex:row];
-   // NSLog(@"dic %@" , dic);
-    //return [[dic objectForKey:@"title"] description];
-    return [self.photos[row][FLICKR_PHOTO_TITLE] description]; // description because could be NSNull
+    NSDictionary *dic = [self.photos objectAtIndex:row];
+    NSLog(@"the dic is %@", dic);
+    return [self.photos[row][FLICKR_PHOTO_PLACE_NAME] description]; // description because could be NSNull
 }
 
 // a helper method that looks in the Model for the photo dictionary at the given row
@@ -68,7 +60,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"FlickrPhoto";
+    static NSString *CellIdentifier = @"Flickr Photo";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
