@@ -105,7 +105,7 @@
             </objects>
             <point key="canvasLocation" x="113" y="389"/>
         </scene>
-        <!--Photo ListTVC - Item-->
+        <!--Photo ListTVC - PhotoList-->
         <scene sceneID="8R0-bO-w0B">
             <objects>
                 <tableViewController id="kxS-PQ-iJo" customClass="PhotoListTVC" sceneMemberID="viewController">
@@ -141,7 +141,7 @@
                             <outlet property="delegate" destination="kxS-PQ-iJo" id="OIo-zu-Sf7"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="B6H-vh-Kok"/>
+                    <tabBarItem key="tabBarItem" title="PhotoList" id="B6H-vh-Kok"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="688-IF-dWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

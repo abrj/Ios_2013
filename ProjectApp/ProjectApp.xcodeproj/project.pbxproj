@@ -16,7 +16,6 @@
 		0404E89A173A4B99008B2946 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E899173A4B99008B2946 /* Default.png */; };
 		0404E89C173A4B99008B2946 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E89B173A4B99008B2946 /* Default@2x.png */; };
 		0404E89E173A4B99008B2946 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E89D173A4B99008B2946 /* Default-568h@2x.png */; };
-		0404E8A7173A4B99008B2946 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8A6173A4B99008B2946 /* ViewController.m */; };
 		0404E8AF173A4CAB008B2946 /* PhotoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8AE173A4CAB008B2946 /* PhotoFetcher.m */; };
 		0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */; };
 		0404E8B7173A4D61008B2946 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B6173A4D61008B2946 /* PhotoUploader.m */; };
@@ -39,8 +38,6 @@
 		0404E899173A4B99008B2946 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0404E89B173A4B99008B2946 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0404E89D173A4B99008B2946 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		0404E8A5173A4B99008B2946 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0404E8A6173A4B99008B2946 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0404E8AD173A4CAB008B2946 /* PhotoFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoFetcher.h; sourceTree = "<group>"; };
 		0404E8AE173A4CAB008B2946 /* PhotoFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoFetcher.m; sourceTree = "<group>"; };
 		0404E8B1173A4CD0008B2946 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
@@ -100,13 +97,11 @@
 			isa = PBXGroup;
 			children = (
 				0404E8C0173A5394008B2946 /* ViewControllers */,
-				0404E8A5173A4B99008B2946 /* ViewController.h */,
 				0404E8AD173A4CAB008B2946 /* PhotoFetcher.h */,
 				0404E8AE173A4CAB008B2946 /* PhotoFetcher.m */,
 				0404E8B5173A4D61008B2946 /* PhotoUploader.h */,
 				0404E8B6173A4D61008B2946 /* PhotoUploader.m */,
-				0404E8A6173A4B99008B2946 /* ViewController.m */,
-				0404E8BB173A5104008B2946 /* iPhone.storyboard */,
+				0404E8D8173A8ED5008B2946 /* Storyboards */,
 				0404E8B0173A4CD0008B2946 /* FlickrFetcher */,
 				0404E88E173A4B99008B2946 /* Supporting Files */,
 			);
@@ -148,6 +143,14 @@
 				0404E8BE173A538A008B2946 /* NewPhotoViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0404E8D8173A8ED5008B2946 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0404E8BB173A5104008B2946 /* iPhone.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +221,6 @@
 			files = (
 				0404E894173A4B99008B2946 /* main.m in Sources */,
 				0404E898173A4B99008B2946 /* AppDelegate.m in Sources */,
-				0404E8A7173A4B99008B2946 /* ViewController.m in Sources */,
 				0404E8AF173A4CAB008B2946 /* PhotoFetcher.m in Sources */,
 				0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */,
 				0404E8B7173A4D61008B2946 /* PhotoUploader.m in Sources */,

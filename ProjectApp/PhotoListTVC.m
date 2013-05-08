@@ -22,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.photos = [FlickrFetcher stanfordPhotos];
+    self.photos = [FlickrFetcher getAllPhotos];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,9 +43,7 @@
 
 - (NSString *)titleForRow:(NSUInteger)row
 {
-    NSDictionary *dic = [self.photos objectAtIndex:row];
-    NSLog(@"the dic is %@", dic);
-    return [self.photos[row][FLICKR_PHOTO_PLACE_NAME] description]; // description because could be NSNull
+    return [self.photos[row][FLICKR_PHOTO_TITLE] description]; // description because could be NSNull
 }
 
 // a helper method that looks in the Model for the photo dictionary at the given row
