@@ -50,10 +50,10 @@
 
 - (NSString *)titleForRow:(NSUInteger)row
 {
-    NSDictionary *dic = [self.photos objectAtIndex:row];
-    NSLog(@"dic %@" , dic);
-    return [[dic objectForKey:@"title"] description];
-    //return [self.photos[row][FLICKR_PHOTO_TITLE] description]; // description because could be NSNull
+    //NSDictionary *dic = [self.photos objectAtIndex:row];
+   // NSLog(@"dic %@" , dic);
+    //return [[dic objectForKey:@"title"] description];
+    return [self.photos[row][FLICKR_PHOTO_TITLE] description]; // description because could be NSNull
 }
 
 // a helper method that looks in the Model for the photo dictionary at the given row
