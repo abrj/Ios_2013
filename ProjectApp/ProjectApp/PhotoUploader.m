@@ -10,5 +10,9 @@
 
 @implementation PhotoUploader
 
-
+-(void) uploadPhoto:(NSData *)toFlickr
+{
+    //TODO
+    
+}
 @end

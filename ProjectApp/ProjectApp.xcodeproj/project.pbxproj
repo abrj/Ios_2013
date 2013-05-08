@@ -20,6 +20,8 @@
 		0404E8AF173A4CAB008B2946 /* PhotoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8AE173A4CAB008B2946 /* PhotoFetcher.m */; };
 		0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */; };
 		0404E8B7173A4D61008B2946 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B6173A4D61008B2946 /* PhotoUploader.m */; };
+		0404E8BC173A5104008B2946 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0404E8BB173A5104008B2946 /* iPhone.storyboard */; };
+		0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8BE173A538A008B2946 /* NewPhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,9 @@
 		0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		0404E8B5173A4D61008B2946 /* PhotoUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoUploader.h; sourceTree = "<group>"; };
 		0404E8B6173A4D61008B2946 /* PhotoUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUploader.m; sourceTree = "<group>"; };
+		0404E8BB173A5104008B2946 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
+		0404E8BD173A538A008B2946 /* NewPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPhotoViewController.h; path = ../NewPhotoViewController.h; sourceTree = "<group>"; };
+		0404E8BE173A538A008B2946 /* NewPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPhotoViewController.m; path = ../NewPhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +96,14 @@
 		0404E88D173A4B99008B2946 /* ProjectApp */ = {
 			isa = PBXGroup;
 			children = (
+				0404E8C0173A5394008B2946 /* ViewControllers */,
 				0404E8A5173A4B99008B2946 /* ViewController.h */,
 				0404E8AD173A4CAB008B2946 /* PhotoFetcher.h */,
+				0404E8AE173A4CAB008B2946 /* PhotoFetcher.m */,
 				0404E8B5173A4D61008B2946 /* PhotoUploader.h */,
 				0404E8B6173A4D61008B2946 /* PhotoUploader.m */,
-				0404E8AE173A4CAB008B2946 /* PhotoFetcher.m */,
 				0404E8A6173A4B99008B2946 /* ViewController.m */,
+				0404E8BB173A5104008B2946 /* iPhone.storyboard */,
 				0404E8B0173A4CD0008B2946 /* FlickrFetcher */,
 				0404E88E173A4B99008B2946 /* Supporting Files */,
 			);
@@ -127,6 +134,15 @@
 				0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */,
 			);
 			path = FlickrFetcher;
+			sourceTree = "<group>";
+		};
+		0404E8C0173A5394008B2946 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0404E8BD173A538A008B2946 /* NewPhotoViewController.h */,
+				0404E8BE173A538A008B2946 /* NewPhotoViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +200,7 @@
 				0404E89A173A4B99008B2946 /* Default.png in Resources */,
 				0404E89C173A4B99008B2946 /* Default@2x.png in Resources */,
 				0404E89E173A4B99008B2946 /* Default-568h@2x.png in Resources */,
+				0404E8BC173A5104008B2946 /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +217,7 @@
 				0404E8AF173A4CAB008B2946 /* PhotoFetcher.m in Sources */,
 				0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */,
 				0404E8B7173A4D61008B2946 /* PhotoUploader.m in Sources */,
+				0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +296,7 @@
 		0404E8AB173A4B99008B2946 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectApp/ProjectApp-Prefix.pch";
 				INFOPLIST_FILE = "ProjectApp/ProjectApp-Info.plist";
@@ -289,6 +308,7 @@
 		0404E8AC173A4B99008B2946 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectApp/ProjectApp-Prefix.pch";
 				INFOPLIST_FILE = "ProjectApp/ProjectApp-Info.plist";

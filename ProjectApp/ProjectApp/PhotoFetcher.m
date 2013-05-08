@@ -10,4 +10,9 @@
 
 @implementation PhotoFetcher
 
+-(NSArray *)getNewPhotos
+{
+    //TO to
+    //Missing return statement
+}
 @end
