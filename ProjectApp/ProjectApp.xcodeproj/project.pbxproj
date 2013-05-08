@@ -22,6 +22,7 @@
 		0404E8B7173A4D61008B2946 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B6173A4D61008B2946 /* PhotoUploader.m */; };
 		0404E8BC173A5104008B2946 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0404E8BB173A5104008B2946 /* iPhone.storyboard */; };
 		0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8BE173A538A008B2946 /* NewPhotoViewController.m */; };
+		0404E8C6173A6D81008B2946 /* PhotoListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8C5173A6D81008B2946 /* PhotoListTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		0404E8BB173A5104008B2946 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		0404E8BD173A538A008B2946 /* NewPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPhotoViewController.h; path = ../NewPhotoViewController.h; sourceTree = "<group>"; };
 		0404E8BE173A538A008B2946 /* NewPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPhotoViewController.m; path = ../NewPhotoViewController.m; sourceTree = "<group>"; };
+		0404E8C4173A6D81008B2946 /* PhotoListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoListTVC.h; path = ../PhotoListTVC.h; sourceTree = "<group>"; };
+		0404E8C5173A6D81008B2946 /* PhotoListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoListTVC.m; path = ../PhotoListTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,8 @@
 		0404E8C0173A5394008B2946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0404E8C4173A6D81008B2946 /* PhotoListTVC.h */,
+				0404E8C5173A6D81008B2946 /* PhotoListTVC.m */,
 				0404E8BD173A538A008B2946 /* NewPhotoViewController.h */,
 				0404E8BE173A538A008B2946 /* NewPhotoViewController.m */,
 			);
@@ -218,6 +223,7 @@
 				0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */,
 				0404E8B7173A4D61008B2946 /* PhotoUploader.m in Sources */,
 				0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */,
+				0404E8C6173A6D81008B2946 /* PhotoListTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
