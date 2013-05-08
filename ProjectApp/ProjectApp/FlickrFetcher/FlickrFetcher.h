@@ -31,7 +31,7 @@ typedef enum {
 @interface FlickrFetcher : NSObject
 
 // fetch a bunch of Flickr photo dictionaries using the Flickr API
-+ (NSArray *)stanfordPhotos;
++ (NSArray *)getAllPhotos;
 
 // get the URL for a Flickr photo given a dictionary of Flickr photo info
 //  (which can be gotten using stanfordPhotos or latestGeoreferencedPhotos)
