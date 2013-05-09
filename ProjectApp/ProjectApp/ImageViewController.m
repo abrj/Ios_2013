@@ -17,6 +17,8 @@
 
 @implementation ImageViewController
 
+#define MAX_ZOOM_SCALE 2.0
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -68,6 +70,26 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.imageView;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    
+    //We need to find the lesser minimum that still shows the whole picture
+    float heightZoomMin = self.scrollView.bounds.size.height / self.imageView.image.size.height;
+    float widthZoomMin  = self.scrollView.bounds.size.width  / self.imageView.image.size.width;
+    //Zoom to the lesser level to see the whole picture
+    self.scrollView.zoomScale = MIN(widthZoomMin, heightZoomMin);
+    //Also set the minimum to the lesser level, so there is only background visible on the botom or side but never both
+    self.scrollView.minimumZoomScale = self.scrollView.zoomScale;
+    
+    
+    //Just in case we get an image with less pixels than our view area, set the minZoom to 1.0
+    if (self.scrollView.minimumZoomScale > MAX_ZOOM_SCALE ) {
+        self.scrollView.minimumZoomScale = 1;
+    }
 }
 
 @end

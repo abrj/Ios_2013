@@ -26,24 +26,12 @@
     return results;
 }
 
-+ (NSArray *)topPlaces
-{
-    NSString *request = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.places.getTopPlacesList&place_type_id=7"];
-    return [[self executeFlickrFetch:request] valueForKeyPath:@"places.place"];
-}
-
 + (NSArray *)getAllPhotos
 {
     // Ved ændring af user_id check altid @ før N. Det skrives om til %40 som ikke virker. 
     
     NSString *request = @"http://api.flickr.com/services/rest/?user_id=95550255@N05&format=json&nojsoncallback=1&extras=original_format,tags,description,geo,date_upload,owner_name&page=1&has_geo=1&method=flickr.photos.search";
     
-    return [[self executeFlickrFetch:request] valueForKeyPath:@"photos.photo"];
-}
-
-+ (NSArray *)stanfordPhotos
-{
-    NSString *request = @"http://api.flickr.com/services/rest/?user_id=48247111@N07&format=json&nojsoncallback=1&extras=original_format,tags,description,geo,date_upload,owner_name&page=1&method=flickr.photos.search";
     return [[self executeFlickrFetch:request] valueForKeyPath:@"photos.photo"];
 }
 
@@ -60,12 +48,6 @@
         }
     }
     return photos;
-}
-
-+ (NSArray *)latestGeoreferencedPhotos
-{
-    NSString *request = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=500&license=1,2,4,7&has_geo=1&extras=original_format,tags,description,geo,date_upload,owner_name,place_url"];
-    return [[self executeFlickrFetch:request] valueForKeyPath:@"photos.photo"];
 }
 
 + (NSString *)urlStringForPhoto:(NSDictionary *)photo format:(FlickrPhotoFormat)format

@@ -17,7 +17,7 @@
 #define FLICKR_LATITUDE @"latitude"
 #define FLICKR_LONGITUDE @"longitude"
 #define FLICKR_PHOTO_OWNER @"ownername"
-#define FLICKR_PHOTO_PLACE_NAME @"derived_place"  // doesn't work for Stanford photos
+#define FLICKR_PHOTO_PLACE_NAME @"derived_place"
 #define FLICKR_TAGS @"tags"
 
 #define NSLOG_FLICKR NO
@@ -33,13 +33,8 @@ typedef enum {
 // fetch a bunch of Flickr photo dictionaries using the Flickr API
 + (NSArray *)getAllPhotos;
 
-+ (NSArray *)stanfordPhotos;
-
 // get the URL for a Flickr photo given a dictionary of Flickr photo info
 //  (which can be gotten using stanfordPhotos or latestGeoreferencedPhotos)
 + (NSURL *)urlForPhoto:(NSDictionary *)photo format:(FlickrPhotoFormat)format;
-
-// fetch a bunch of recently taken georeferenced Flickr photo dictionaries
-+ (NSArray *)latestGeoreferencedPhotos;
 
 @end
