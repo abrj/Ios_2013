@@ -42,4 +42,17 @@
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //Checks if the sender is the right one
+    if([sender isKindOfClass:[UIViewController class]]){
+        if ([segue.identifier isEqualToString:@"PickedImage"]){
+            if ([segue.destinationViewController respondsToSelector:@selector(setPickedImage:)]){
+                [segue.destinationViewController performSelector:@selector(setPickedImage:)];
+                
+            }
+        }
+    }
+}
 @end

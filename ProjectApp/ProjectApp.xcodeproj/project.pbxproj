@@ -12,15 +12,15 @@
 		0404E88C173A4B99008B2946 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0404E88B173A4B99008B2946 /* CoreGraphics.framework */; };
 		0404E892173A4B99008B2946 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0404E890173A4B99008B2946 /* InfoPlist.strings */; };
 		0404E894173A4B99008B2946 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E893173A4B99008B2946 /* main.m */; };
-		0404E898173A4B99008B2946 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E897173A4B99008B2946 /* AppDelegate.m */; };
 		0404E89A173A4B99008B2946 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E899173A4B99008B2946 /* Default.png */; };
 		0404E89C173A4B99008B2946 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E89B173A4B99008B2946 /* Default@2x.png */; };
 		0404E89E173A4B99008B2946 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E89D173A4B99008B2946 /* Default-568h@2x.png */; };
 		0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */; };
-		0404E8B7173A4D61008B2946 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B6173A4D61008B2946 /* PhotoUploader.m */; };
 		0404E8BC173A5104008B2946 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0404E8BB173A5104008B2946 /* iPhone.storyboard */; };
 		0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8BE173A538A008B2946 /* NewPhotoViewController.m */; };
 		0404E8D2173A8A62008B2946 /* PhotoListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8D1173A8A61008B2946 /* PhotoListTVC.m */; };
+		0404E944173C27F4008B2946 /* PhotoUploaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E943173C27F4008B2946 /* PhotoUploaderVC.m */; };
+		0404E947173C2877008B2946 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E946173C2877008B2946 /* AppDelegate.m */; };
 		06BDC1BC173A923F00611447 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BDC1BB173A923F00611447 /* ImageViewController.m */; };
 		06CD6D8D173BA8580026E0D3 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D8C173BA8580026E0D3 /* GoogleMaps.framework */; };
 		06CD6D8F173BA89F0026E0D3 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06CD6D8E173BA89F0026E0D3 /* GoogleMaps.bundle */; };
@@ -50,21 +50,21 @@
 		0404E891173A4B99008B2946 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0404E893173A4B99008B2946 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0404E895173A4B99008B2946 /* ProjectApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjectApp-Prefix.pch"; sourceTree = "<group>"; };
-		0404E896173A4B99008B2946 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		0404E897173A4B99008B2946 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0404E899173A4B99008B2946 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0404E89B173A4B99008B2946 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0404E89D173A4B99008B2946 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0404E8B1173A4CD0008B2946 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		0404E8B2173A4CD0008B2946 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
-		0404E8B5173A4D61008B2946 /* PhotoUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoUploader.h; sourceTree = "<group>"; };
-		0404E8B6173A4D61008B2946 /* PhotoUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUploader.m; sourceTree = "<group>"; };
 		0404E8BB173A5104008B2946 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		0404E8BD173A538A008B2946 /* NewPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPhotoViewController.h; path = ../NewPhotoViewController.h; sourceTree = "<group>"; };
 		0404E8BE173A538A008B2946 /* NewPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPhotoViewController.m; path = ../NewPhotoViewController.m; sourceTree = "<group>"; };
 		0404E8D0173A8A61008B2946 /* PhotoListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoListTVC.h; path = ../PhotoListTVC.h; sourceTree = "<group>"; };
 		0404E8D1173A8A61008B2946 /* PhotoListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoListTVC.m; path = ../PhotoListTVC.m; sourceTree = "<group>"; };
+		0404E942173C27F4008B2946 /* PhotoUploaderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoUploaderVC.h; sourceTree = "<group>"; };
+		0404E943173C27F4008B2946 /* PhotoUploaderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUploaderVC.m; sourceTree = "<group>"; };
+		0404E945173C2877008B2946 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0404E946173C2877008B2946 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		06BDC1BA173A923F00611447 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		06BDC1BB173A923F00611447 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		06CD6D8C173BA8580026E0D3 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -161,8 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				0404E8C0173A5394008B2946 /* ViewControllers */,
-				0404E8B5173A4D61008B2946 /* PhotoUploader.h */,
-				0404E8B6173A4D61008B2946 /* PhotoUploader.m */,
 				06CD6DA8173BAC060026E0D3 /* MapViewController.h */,
 				06CD6DA9173BAC060026E0D3 /* MapViewController.m */,
 				06CD6DAB173BAFCA0026E0D3 /* PhotoStorage.h */,
@@ -177,8 +175,8 @@
 		0404E88E173A4B99008B2946 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0404E896173A4B99008B2946 /* AppDelegate.h */,
-				0404E897173A4B99008B2946 /* AppDelegate.m */,
+				0404E945173C2877008B2946 /* AppDelegate.h */,
+				0404E946173C2877008B2946 /* AppDelegate.m */,
 				0404E88F173A4B99008B2946 /* ProjectApp-Info.plist */,
 				0404E890173A4B99008B2946 /* InfoPlist.strings */,
 				0404E893173A4B99008B2946 /* main.m */,
@@ -203,6 +201,8 @@
 		0404E8C0173A5394008B2946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0404E942173C27F4008B2946 /* PhotoUploaderVC.h */,
+				0404E943173C27F4008B2946 /* PhotoUploaderVC.m */,
 				0404E8D0173A8A61008B2946 /* PhotoListTVC.h */,
 				0404E8D1173A8A61008B2946 /* PhotoListTVC.m */,
 				06BDC1BA173A923F00611447 /* ImageViewController.h */,
@@ -291,15 +291,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0404E894173A4B99008B2946 /* main.m in Sources */,
-				0404E898173A4B99008B2946 /* AppDelegate.m in Sources */,
 				0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */,
-				0404E8B7173A4D61008B2946 /* PhotoUploader.m in Sources */,
 				0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */,
 				0404E8D2173A8A62008B2946 /* PhotoListTVC.m in Sources */,
 				06BDC1BC173A923F00611447 /* ImageViewController.m in Sources */,
 				06CD6DAA173BAC060026E0D3 /* MapViewController.m in Sources */,
 				06CD6DAD173BAFCA0026E0D3 /* PhotoStorage.m in Sources */,
 				06CD6DB0173BEE240026E0D3 /* PhotoDescriptionVC.m in Sources */,
+				0404E944173C27F4008B2946 /* PhotoUploaderVC.m in Sources */,
+				0404E947173C2877008B2946 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
