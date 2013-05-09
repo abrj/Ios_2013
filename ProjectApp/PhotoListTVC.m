@@ -72,9 +72,9 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show Image"]) {
-                if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
-                    NSURL *url = [FlickrFetcher urlForPhoto:self.photos[indexPath.row] format:FlickrPhotoFormatLarge];
-                    [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
+                if ([segue.destinationViewController respondsToSelector:@selector(setPhotoInfo:)]) {
+                    NSDictionary *image = self.photos[indexPath.row];
+                    [segue.destinationViewController performSelector:@selector(setPhotoInfo:) withObject:image];
                     [segue.destinationViewController setTitle:[self titleForRow:indexPath.row]];
                 }
             }

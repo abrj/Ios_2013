@@ -7,11 +7,17 @@
 //
 
 #import "ImageViewController.h"
+#import "FlickrFetcher.h"
+#import "PhotoDescriptionVC.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 
+@property (strong, nonatomic) NSDictionary *image;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIScrollView *txtScrollView;
+
 
 @end
 
@@ -27,12 +33,48 @@
     self.scrollView.maximumZoomScale = 5.0;
     self.scrollView.delegate = self;
     [self resetImage];
+    
+    // Making sure the back button shows "Back" instead of the title of the parent VC.
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
+}
+
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    [self centerScrollViewContents];;
+}
+
+- (void)centerScrollViewContents {
+    CGSize boundsSize = self.scrollView.bounds.size;
+    CGRect contentsFrame = self.imageView.frame;
+    
+    if (contentsFrame.size.width < boundsSize.width) {
+        contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;
+    } else {
+        contentsFrame.origin.x = 0.0f;
+    }
+    
+    if (contentsFrame.size.height < boundsSize.height) {
+        contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0f;
+    } else {
+        contentsFrame.origin.y = 0.0f;
+    }
+    
+    self.imageView.frame = contentsFrame;
 }
 
 - (void)setImageURL:(NSURL *)imageURL
 {
     _imageURL = imageURL;
     [self resetImage];
+}
+
+- (void) setPhotoInfo:(NSDictionary *)image
+{
+    self.image = image;
+    [self setImageURL:[FlickrFetcher urlForPhoto:image format:FlickrPhotoFormatLarge]];
 }
 
 // fetches the data from the URL
@@ -49,10 +91,12 @@
         NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
         UIImage *image = [[UIImage alloc] initWithData:imageData];
         if (image) {
-            self.scrollView.zoomScale = 1.0;
             self.scrollView.contentSize = image.size;
             self.imageView.image = image;
-            self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+            self.imageView.frame = CGRectMake(0,
+                                              0,
+                                              image.size.width,
+                                              image.size.height);
         }
     }
 }
@@ -91,5 +135,16 @@
         self.scrollView.minimumZoomScale = 1;
     }
 }
+
+
+// Action for pushing the description view when swiping.
+- (IBAction)showDescription:(UISwipeGestureRecognizer *)sender {
+    PhotoDescriptionVC *photoDescVC = [[PhotoDescriptionVC alloc] init];
+    photoDescVC.description = [[self.image valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
+    photoDescVC.location = [self.image[FLICKR_PLACE_NAME] description];
+    [photoDescVC setTitle:self.title];
+    [self.navigationController pushViewController:photoDescVC animated:YES];
+}
+
 
 @end

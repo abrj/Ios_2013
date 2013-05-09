@@ -38,6 +38,7 @@
 		06CD6DA7173BA9A30026E0D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6DA6173BA9A30026E0D3 /* SystemConfiguration.framework */; };
 		06CD6DAA173BAC060026E0D3 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DA9173BAC060026E0D3 /* MapViewController.m */; };
 		06CD6DAD173BAFCA0026E0D3 /* PhotoStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */; };
+		06CD6DB0173BEE240026E0D3 /* PhotoDescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DAF173BEE240026E0D3 /* PhotoDescriptionVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,8 @@
 		06CD6DA9173BAC060026E0D3 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		06CD6DAB173BAFCA0026E0D3 /* PhotoStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoStorage.h; sourceTree = "<group>"; };
 		06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoStorage.m; sourceTree = "<group>"; };
+		06CD6DAE173BEE240026E0D3 /* PhotoDescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDescriptionVC.h; sourceTree = "<group>"; };
+		06CD6DAF173BEE240026E0D3 /* PhotoDescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDescriptionVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +209,8 @@
 				06BDC1BB173A923F00611447 /* ImageViewController.m */,
 				0404E8BD173A538A008B2946 /* NewPhotoViewController.h */,
 				0404E8BE173A538A008B2946 /* NewPhotoViewController.m */,
+				06CD6DAE173BEE240026E0D3 /* PhotoDescriptionVC.h */,
+				06CD6DAF173BEE240026E0D3 /* PhotoDescriptionVC.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				06BDC1BC173A923F00611447 /* ImageViewController.m in Sources */,
 				06CD6DAA173BAC060026E0D3 /* MapViewController.m in Sources */,
 				06CD6DAD173BAFCA0026E0D3 /* PhotoStorage.m in Sources */,
+				06CD6DB0173BEE240026E0D3 /* PhotoDescriptionVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
