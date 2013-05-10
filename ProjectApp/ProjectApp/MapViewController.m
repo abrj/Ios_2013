@@ -7,81 +7,166 @@
 //
 
 #import "MapViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
 #import "FlickrFetcher.h"
+#import "PhotoAnnotation.h"
+#import "ImageViewController.h"
 
-@interface MapViewController ()
+
+typedef enum AnnotationIndex : NSUInteger
+{
+    photoAnnotationIndex = 0,
+} AnnotationIndex;
+
+@interface MapViewController () <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) NSArray *photos;
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) NSMutableArray *mapAnnotations;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
+@property (nonatomic, strong) IBOutlet ImageViewController *imageViewController;
 
 @end
 
 @implementation MapViewController
 
-#define START_LOCATION_LATITUDE
-#define START_LOCATION_LONGITUDE
+#define START_ZOOM_LEVEL 6
 
-// Google Map View
-GMSMapView *mapView_;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self startStandardUpdates];
     self.photos = [FlickrFetcher getAllPhotos];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self mapSetup];
+    [self setAnnotationsForPhotos];
 }
 
 
 - (void)setPhotos:(NSArray *)photos
 {
     _photos = photos;
-    [self setPhotoMarkers];
 }
 
 
-- (void)loadView {
+- (void)mapSetup {
+    self.mapView.showsUserLocation = YES;
+    [self.mapView setMapType:MKMapTypeHybrid];
     
+    CLLocationDistance visibleDistance = 1000; // 100 kilometers
+   
+    CLLocationCoordinate2D userLoc = CLLocationCoordinate2DMake(0, 0);
     
-    // Create a GMSCameraPosition that tells the map to display the
-    // latest posted photo at its location at zoom level 6.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
-                                                                 zoom:6];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-    mapView_.settings.myLocationButton = YES;
-    self.view = mapView_;
+    if (self.locationManager.location) {
+    userLoc = self.locationManager.location.coordinate;
+    }
     
-    // Set the markers for the photos, on the map.
-    [self setPhotoMarkers];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(userLoc.latitude, userLoc.longitude), visibleDistance, visibleDistance);
+    [self.mapView setRegion:region];
 }
 
-// Method for putting markers for each photo, on the map.
-- (void)setPhotoMarkers
+-(void) setAnnotationsForPhotos
 {
+    self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:self.photos.count];
+    NSUInteger i = 0;
     for (NSDictionary *dic in self.photos)
     {
-        double latitude = [dic[FLICKR_LATITUDE] doubleValue];
-        double longitude = [dic[FLICKR_LONGITUDE] doubleValue];
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake(latitude, longitude);
-        marker.title = [dic[FLICKR_PHOTO_TITLE] description];
-        marker.snippet = [dic[FLICKR_PHOTO_TITLE] description];
+        // Create the coordinate for the annotation:
+        CLLocationCoordinate2D annotationCoord;
+        annotationCoord.latitude = [dic[FLICKR_LATITUDE] doubleValue];
+        annotationCoord.longitude = [dic[FLICKR_LONGITUDE] doubleValue];
         
-        // Setting the icon of the marker to be the image:
-        NSData *imgData = [[NSData alloc] initWithContentsOfURL:[FlickrFetcher urlForPhoto:dic format:FlickrPhotoFormatThumbnail]];
-        UIImage *icon = [[UIImage alloc] initWithData:imgData];
-        marker.icon = icon;
-        marker.map = mapView_;
+        PhotoAnnotation *annotation = [[PhotoAnnotation alloc] init];
+        
+        annotation.location = &(annotationCoord);
+        annotation.title = [dic[FLICKR_PHOTO_TITLE] description];
+        annotation.subtitle = [[dic valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
+        annotation.index = &(i);
+        [self.mapAnnotations insertObject:annotation atIndex:*(annotation.index)];
+        [self.mapView addAnnotation:annotation];
+        i++;
     }
 }
 
-
-
-- (void)didReceiveMemoryWarning
+- (void)startStandardUpdates
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == self.locationManager)
+        self.locationManager = [[CLLocationManager alloc] init];
+    
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    
+    // Set a movement threshold for new events.
+    self.locationManager.distanceFilter = 500;
+    
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    id <MKAnnotation> annotation = [view annotation];
+    if ([annotation isKindOfClass:[PhotoAnnotation class]])
+    {
+        NSLog(@"Clicked on a PhotoAnnotation");
+    }
+    
+    [self.navigationController pushViewController:self.imageViewController animated:YES];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    // in case it's the user location, we already have an annotation, so just return nil
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+    {
+        return nil;
+    }
+    
+    // handle our three custom annotations
+    //
+    if ([annotation isKindOfClass:[PhotoAnnotation class]]) // for Golden Gate Bridge
+    {
+        // try to dequeue an existing pin view first
+        static NSString *identifier = @"photoAnnotation";
+        
+        MKPinAnnotationView *pinView =
+        (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        if (pinView == nil)
+        {
+            // if an existing pin view was not available, create one
+            MKPinAnnotationView *customPinView = [[MKPinAnnotationView alloc]
+                                                  initWithAnnotation:annotation reuseIdentifier:identifier];
+            customPinView.pinColor = MKPinAnnotationColorPurple;
+            customPinView.animatesDrop = YES;
+            customPinView.canShowCallout = YES;
+            
+            // add a detail disclosure button to the callout which will open a new view controller page
+            //
+            // note: when the detail disclosure button is tapped, we respond to it via:
+            //       calloutAccessoryControlTapped delegate method
+            //
+            // by using "calloutAccessoryControlTapped", it's a convenient way to find out which annotation was tapped
+            //
+            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+            customPinView.rightCalloutAccessoryView = rightButton;
+            
+            return customPinView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    }
+    return nil;
 }
 
 @end

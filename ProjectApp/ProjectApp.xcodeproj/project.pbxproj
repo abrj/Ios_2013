@@ -41,6 +41,8 @@
 		06CD6DAA173BAC060026E0D3 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DA9173BAC060026E0D3 /* MapViewController.m */; };
 		06CD6DAD173BAFCA0026E0D3 /* PhotoStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */; };
 		06CD6DB0173BEE240026E0D3 /* PhotoDescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DAF173BEE240026E0D3 /* PhotoDescriptionVC.m */; };
+		06CD6DB2173D62160026E0D3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6DB1173D62160026E0D3 /* MapKit.framework */; };
+		06CD6DB6173D99A70026E0D3 /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DB5173D99A70026E0D3 /* PhotoAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,9 @@
 		06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoStorage.m; sourceTree = "<group>"; };
 		06CD6DAE173BEE240026E0D3 /* PhotoDescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDescriptionVC.h; sourceTree = "<group>"; };
 		06CD6DAF173BEE240026E0D3 /* PhotoDescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDescriptionVC.m; sourceTree = "<group>"; };
+		06CD6DB1173D62160026E0D3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		06CD6DB4173D99A70026E0D3 /* PhotoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAnnotation.h; sourceTree = "<group>"; };
+		06CD6DB5173D99A70026E0D3 /* PhotoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06CD6DB2173D62160026E0D3 /* MapKit.framework in Frameworks */,
 				06CD6DA7173BA9A30026E0D3 /* SystemConfiguration.framework in Frameworks */,
 				06CD6DA5173BA99E0026E0D3 /* QuartzCore.framework in Frameworks */,
 				06CD6DA3173BA9930026E0D3 /* OpenGLES.framework in Frameworks */,
@@ -141,6 +147,7 @@
 		0404E886173A4B99008B2946 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06CD6DB1173D62160026E0D3 /* MapKit.framework */,
 				06CD6DA6173BA9A30026E0D3 /* SystemConfiguration.framework */,
 				06CD6DA4173BA99E0026E0D3 /* QuartzCore.framework */,
 				06CD6DA2173BA9930026E0D3 /* OpenGLES.framework */,
@@ -165,6 +172,7 @@
 		0404E88D173A4B99008B2946 /* ProjectApp */ = {
 			isa = PBXGroup;
 			children = (
+				06CD6DB3173D994F0026E0D3 /* Annotation */,
 				0404E8C0173A5394008B2946 /* ViewControllers */,
 				06CD6DAB173BAFCA0026E0D3 /* PhotoStorage.h */,
 				06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */,
@@ -229,6 +237,15 @@
 				0404E8BB173A5104008B2946 /* iPhone.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		06CD6DB3173D994F0026E0D3 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				06CD6DB4173D99A70026E0D3 /* PhotoAnnotation.h */,
+				06CD6DB5173D99A70026E0D3 /* PhotoAnnotation.m */,
+			);
+			name = Annotation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +327,7 @@
 				0404E944173C27F4008B2946 /* PhotoUploaderVC.m in Sources */,
 				0404E947173C2877008B2946 /* AppDelegate.m in Sources */,
 				04428D07173D169D0088A376 /* FlickrAuthentication.m in Sources */,
+				06CD6DB6173D99A70026E0D3 /* PhotoAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
