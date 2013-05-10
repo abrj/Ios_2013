@@ -17,22 +17,34 @@
 
 @implementation FlickrAuthentication
 
+
 static NSString *token = nil;
 static NSString *frob = nil;
 
-+(NSString *)getAcessToken
++(void)getAcessToken
 {
-    NSString *token = nil;
     
     //Check the token at Flickr
+    if([self getToken]){
+        [self checkToken];
+    }
     
     //else
     [self openBrowserForFlickrPermission];
-    token = token;
-    
-    return token;
 }
 
+
++(BOOL)checkToken
+{
+    NSString *api_sig = [self md5Hash:[NSString stringWithFormat:@"%@api_key%@auth_token%@", SECRECT_KEY, API_KEY, [self getToken]]];
+     NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.auth.checkToken&api_key=%@&auth_token=%@&&api_sig=%@", API_KEY, [self getToken], api_sig]];
+    NSError *error;
+    NSData* data = [NSData dataWithContentsOfURL:requestURL options:NSDataReadingUncached error:&error];
+    
+    NSString *strResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"checking token. response is : %@", strResponse);
+    return YES;
+}
 +(void)setToken:(NSString*)newValue
 {
     token = newValue;
@@ -56,7 +68,7 @@ static NSString *frob = nil;
 +(void)openBrowserForFlickrPermission
 {
     //Adds self as observer to "urlFrobSet" and call parseFrob, when the notification is raised
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAndParseFrob::) name:@"urlFrobSet" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAndParseFrob:) name:@"urlFrobSet" object:nil];
     NSString *permissions = @"write";
     NSString *signatureKey = @"5c824b45c2e679f4ff1ea3afadd77e3e";   //Should be calling md5Hast method
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://flickr.com/services/auth/?api_key=%@&perms=%@&api_sig=%@", API_KEY, permissions, signatureKey]];

@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 
 @interface PhotoUploaderVC : UIViewController
-@property (strong, nonatomic) NSData *pickedImage;
+@property (strong, nonatomic) UIImage *pickedImage;
 
 @end
 

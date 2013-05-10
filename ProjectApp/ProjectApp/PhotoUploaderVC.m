@@ -13,13 +13,14 @@
 #import "FlickrAuthentication.h"
 
 
-
-
-
 @interface PhotoUploaderVC ()
 
 @property (strong, nonatomic) NSString *frob;
 @property (strong, nonatomic) NSString *token;
+@property (weak, nonatomic) IBOutlet UITextField *titleText;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionText;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
 
 @end
 
@@ -27,24 +28,33 @@
 
 
 #define FLICKR_UPLOAD_URL @"http://api.flickr.com/services/upload"
--(void) setPickedImage:(NSData *)pickedImage
+-(void) setPickedImage:(UIImage *)pickedImage
 {
     _pickedImage = pickedImage;
 }
 
 
--(void)viewDidAppear:(BOOL)animated
+- (IBAction)prepareForUpload:(id)sender
 {
-    [super viewDidAppear:animated];
-
+    //Add observer to 'tokenFetchedAndSet' and calls uploadImage, when the notifcation is raised
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadImage) name:@"tokenFetchedAndSet" object:nil];
+    [self.spinner startAnimating];
+    [FlickrAuthentication getAcessToken];
 }
--(void)viewDidLoad
-{
-    [super viewDidLoad];
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.titleText isFirstResponder] && [touch view] != self.titleText) {
+        [self.titleText resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 -(void)uploadImage
 {
+    self.token = [FlickrAuthentication getToken];
+    NSLog(@"token is : %@", self.token);
     NSString *uploadSig = [FlickrAuthentication getSignatureKey:[NSString stringWithFormat:@"%@api_key%@auth_token%@", SECRECT_KEY, API_KEY, self.token]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -71,10 +81,11 @@
     [body appendData:[[NSString stringWithFormat:@"%@\r\n", uploadSig] dataUsingEncoding:NSUTF8StringEncoding]];
     
     
-    UIImage *image =[ UIImage imageNamed:@"smileyImage.jpeg"];
+    UIImage *image = self.pickedImage;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"photo\"; filename=\"smileyImage.jpeg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"title is %@", self.titleText.text);
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"photo\"; filename=\"%@\"\r\n", self.titleText.text] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
     [body appendData:imageData];
@@ -87,8 +98,6 @@
     // and start loading the data
     NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [theConnection start];
-    
-   
 }
 
 
@@ -101,6 +110,7 @@
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)theData
 {
     NSLog(@"String sent from server %@",[[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding]);
+    [self.spinner stopAnimating];
 }
 
 @end

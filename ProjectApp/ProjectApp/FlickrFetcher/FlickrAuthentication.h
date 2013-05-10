@@ -12,6 +12,8 @@
 #define API_KEY @"32742afe2ba425586223d166cf86bb94"
 #define SECRECT_KEY @"71eb97fcc2b15929"
 
-+(NSString *)getAcessToken;
+
++(void)getAcessToken;
 +(NSString *)getSignatureKey:(NSString*)string;
++(NSString *)getToken;
 @end
