@@ -13,5 +13,5 @@
 #define SECRECT_KEY @"71eb97fcc2b15929"
 
 +(NSString *)getAcessToken;
-+(NSString *)getSignatureKey;
++(NSString *)getSignatureKey:(NSString*)string;
 @end
