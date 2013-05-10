@@ -35,7 +35,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="X5c-wP-ifx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="13"/>
                                 <state key="normal" title="Existing Photo">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,7 +127,7 @@
                                     <constraint firstAttribute="width" constant="122" id="Ea0-n2-sIb"/>
                                     <constraint firstAttribute="height" constant="44" id="lMl-Yd-F6P"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="13"/>
                                 <state key="normal" title="Upload Photo">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -143,8 +143,8 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="66S-gw-C83"/>
                                 </constraints>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1g0-vF-lKI">
@@ -152,7 +152,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="124" id="BAG-3v-Ftl"/>
                                 </constraints>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
@@ -184,6 +184,7 @@
                         <outlet property="descriptionText" destination="1g0-vF-lKI" id="eDV-De-hGh"/>
                         <outlet property="spinner" destination="SDH-tR-LEY" id="AP1-oc-0ME"/>
                         <outlet property="titleText" destination="r1P-2f-CMl" id="LvQ-Cf-JPU"/>
+                        <outlet property="uploadButton" destination="Im8-sE-vaP" id="85W-sD-mPp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RB9-LT-Ahj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -398,9 +399,11 @@
         <class className="PhotoUploaderVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoUploaderVC.h"/>
             <relationships>
+                <relationship kind="action" name="prepareForUpload:"/>
                 <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="titleText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>

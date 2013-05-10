@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (nonatomic) Boolean isUploading;
+@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 
 
 @end
@@ -44,15 +45,21 @@
 
     //Sets up the textView borders
     self.descriptionText.layer.borderWidth = 1;
-    [self.descriptionText.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
-    [self.descriptionText.layer setBorderColor: [[UIColor brownColor] CGColor]];
+    [self.descriptionText.layer setBackgroundColor: [[UIColor grayColor] CGColor]];
+    [self.descriptionText.layer setBorderColor: [[UIColor blackColor] CGColor]];
     [self.descriptionText.layer setBorderWidth: 1.0];
     [self.descriptionText.layer setCornerRadius:8.0f];
     [self.descriptionText.layer setMasksToBounds:YES];
     
+    //Set the background color for textfield
+    self.titleText.backgroundColor = [UIColor grayColor];
+
     //set delegates for textfields
     self.titleText.delegate = self;
     self.descriptionText.delegate = self;
+    
+    //Set the corners for the uploadButton
+    self.uploadButton.layer.cornerRadius = 8.0f;
     
 }
 

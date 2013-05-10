@@ -7,6 +7,8 @@
 //
 
 #import "NewPhotoViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface NewPhotoViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *pickPhotoButton;
@@ -22,12 +24,24 @@
 {
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    //Set the graphics for buttons
+    self.pickPhotoButton.layer.cornerRadius = 8.0f;
+    self.photoNewButton.layer.cornerRadius = 8.0f;
+    self.existingPhotoButton.layer.cornerRadius = 8.0f;
 
 }
+
 
 -(void)viewDidLoad
 {
     [self pickPhotoButton].hidden = YES;
+}
+
+//Disable rotation to landscape mode
+- (BOOL)shouldAutorotate
+{
+    // Return YES for supported orientations
+    return NO;
 }
 -(IBAction)TakePhoto{
     picker = [[UIImagePickerController alloc] init];
