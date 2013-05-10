@@ -100,8 +100,9 @@ static NSString *frob = nil;
     NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://flickr.com/services/rest/?method=flickr.auth.getToken&format=json&api_key=%@&frob=%@&api_sig=%@", API_KEY, frob, api_sig]];
     
     NSError *error;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSData* data = [NSData dataWithContentsOfURL:requestURL options:NSDataReadingUncached error:&error];
-    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     NSString *strResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     self.token = [self ResponseUrlToToken:strResponse];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenFetchedAndSet" object:nil];

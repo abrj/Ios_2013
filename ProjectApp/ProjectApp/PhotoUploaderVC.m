@@ -56,6 +56,7 @@
 
 -(void)uploadImage
 {
+    
     self.token = [FlickrAuthentication getToken];
     NSLog(@"token is : %@", self.token);
     NSString *uploadSig = [FlickrAuthentication getSignatureKey:[NSString stringWithFormat:@"%@api_key%@auth_token%@", SECRECT_KEY, API_KEY, self.token]];
@@ -99,8 +100,10 @@
     
     // create the connection with the request
     // and start loading the data
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [theConnection start];
+  
 }
 
 
@@ -114,6 +117,14 @@
 {
     NSLog(@"String sent from server %@",[[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding]);
     [self.spinner stopAnimating];
+     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload complete!"
+                                                    message:@"Your picture has been uploaded to your account at Flickr"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
