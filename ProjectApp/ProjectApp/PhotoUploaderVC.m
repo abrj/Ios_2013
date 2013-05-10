@@ -11,6 +11,8 @@
 #import "PhotoUploaderVC.h"
 #import "FlickrFetcher.h"
 #import "FlickrAuthentication.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 
 @interface PhotoUploaderVC ()
@@ -33,6 +35,16 @@
     _pickedImage = pickedImage;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.descriptionText.layer.borderWidth = 1;
+    [self.descriptionText.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
+    [self.descriptionText.layer setBorderColor: [[UIColor brownColor] CGColor]];
+    [self.descriptionText.layer setBorderWidth: 1.0];
+    [self.descriptionText.layer setCornerRadius:8.0f];
+    [self.descriptionText.layer setMasksToBounds:YES];
+}
 
 - (IBAction)prepareForUpload:(id)sender
 {
@@ -50,6 +62,9 @@
     if ([self.titleText isFirstResponder] && [touch view] != self.titleText) {
         [self.titleText resignFirstResponder];
     }
+    if ([self.descriptionText isFirstResponder] && [touch view] != self.descriptionText) {
+        [self.descriptionText resignFirstResponder];
+    }
     [super touchesBegan:touches withEvent:event];
 }
 
@@ -58,8 +73,9 @@
 {
     
     NSString *desc = self.descriptionText.text;
+    NSString *tag = @"iosProject2013";
     self.token = [FlickrAuthentication getToken];
-    NSString *uploadSig = [FlickrAuthentication getSignatureKey:[NSString stringWithFormat:@"%@api_key%@auth_token%@description%@", SECRECT_KEY, API_KEY, self.token, desc]];
+    NSString *uploadSig = [FlickrAuthentication getSignatureKey:[NSString stringWithFormat:@"%@api_key%@auth_token%@description%@tags%@", SECRECT_KEY, API_KEY, self.token, desc, tag]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:FLICKR_UPLOAD_URL]];
@@ -84,12 +100,19 @@
     [body appendData:[@"Content-Disposition: form-data; name=\"api_sig\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"%@\r\n", uploadSig] dataUsingEncoding:NSUTF8StringEncoding]];
     
+    //Description
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"description\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"%@",desc] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
+    //Tag
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"tags\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@",tag] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
+    //Image
     UIImage *image = self.pickedImage;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -97,11 +120,6 @@
     [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
     [body appendData:imageData];
-    
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"description\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"testdescription"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
     
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];

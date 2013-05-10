@@ -8,6 +8,7 @@
 
 #import "FlickrFetcher.h"
 #import "FlickrAPIKey.h"
+#import "FlickrAuthentication.h"
 
 #define FLICKR_PLACE_ID @"place_id"
 
@@ -30,10 +31,11 @@
 {
     // Ved ændring af user_id check altid @ før N. Det skrives om til %40 som ikke virker. 
     
-    NSString *request = @"http://api.flickr.com/services/rest/?user_id=95550255@N05&format=json&nojsoncallback=1&extras=original_format,tags,description,geo,date_upload,owner_name&page=1&has_geo=1&method=flickr.photos.search";
+    NSString *request = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=iosProject2013&format=rest", API_KEY];
     
     return [[self executeFlickrFetch:request] valueForKeyPath:@"photos.photo"];
 }
+
 
 
 // Method for retrieving all information of a photo.
