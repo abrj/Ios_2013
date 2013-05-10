@@ -10,7 +10,6 @@
 
 @interface PhotoDescriptionVC : UIViewController
 
-@property (strong, nonatomic) NSString *location;
-@property (strong, nonatomic) NSString *description;
+- (void) importPhotoInfo:(NSDictionary *)photo;
 
 @end

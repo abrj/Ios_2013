@@ -35,19 +35,13 @@
     return [[self executeFlickrFetch:request] valueForKeyPath:@"photos.photo"];
 }
 
-+ (NSArray *)photosInPlace:(NSDictionary *)place maxResults:(int)maxResults
+
+// Method for retrieving all information of a photo.
++ (NSDictionary *)getPhotoInfo:(NSString *)photoId
 {
-    NSArray *photos = nil;
-    NSString *placeId = [place objectForKey:FLICKR_PLACE_ID];
-    if (placeId) {
-        NSString *request = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&place_id=%@&per_page=%d&extras=original_format,tags,description,geo,date_upload,owner_name,place_url", placeId, maxResults];
-        NSString *placeName = [place objectForKey:FLICKR_PLACE_NAME];
-        photos = [[self executeFlickrFetch:request] valueForKeyPath:@"photos.photo"];
-        for (NSMutableDictionary *photo in photos) {
-            [photo setObject:placeName forKey:FLICKR_PHOTO_PLACE_NAME];
-        }
-    }
-    return photos;
+    NSString *request = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=%@", photoId];
+    
+    return [[self executeFlickrFetch:request] valueForKeyPath:@"photo"];
 }
 
 + (NSString *)urlStringForPhoto:(NSDictionary *)photo format:(FlickrPhotoFormat)format
@@ -67,10 +61,10 @@
 	switch (format) {
 		case FlickrPhotoFormatSquare:    formatString = @"s"; break;
 		case FlickrPhotoFormatLarge:     formatString = @"b"; break;
-            // case FlickrPhotoFormatThumbnail: formatString = @"t"; break;
-            // case FlickrPhotoFormatSmall:     formatString = @"m"; break;
-            // case FlickrPhotoFormatMedium500: formatString = @"-"; break;
-            // case FlickrPhotoFormatMedium640: formatString = @"z"; break;
+        case FlickrPhotoFormatThumbnail: formatString = @"t"; break;
+        case FlickrPhotoFormatSmall:     formatString = @"m"; break;
+        case FlickrPhotoFormatMedium500: formatString = @"-"; break;
+        case FlickrPhotoFormatMedium640: formatString = @"z"; break;
 		case FlickrPhotoFormatOriginal:  formatString = @"o"; break;
 	}
     

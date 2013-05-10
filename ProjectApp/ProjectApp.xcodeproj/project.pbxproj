@@ -166,8 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				0404E8C0173A5394008B2946 /* ViewControllers */,
-				06CD6DA8173BAC060026E0D3 /* MapViewController.h */,
-				06CD6DA9173BAC060026E0D3 /* MapViewController.m */,
 				06CD6DAB173BAFCA0026E0D3 /* PhotoStorage.h */,
 				06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */,
 				04428C56173CE7C20088A376 /* smileyImage.jpeg */,
@@ -209,6 +207,8 @@
 		0404E8C0173A5394008B2946 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				06CD6DA8173BAC060026E0D3 /* MapViewController.h */,
+				06CD6DA9173BAC060026E0D3 /* MapViewController.m */,
 				0404E942173C27F4008B2946 /* PhotoUploaderVC.h */,
 				0404E943173C27F4008B2946 /* PhotoUploaderVC.m */,
 				0404E8D0173A8A61008B2946 /* PhotoListTVC.h */,

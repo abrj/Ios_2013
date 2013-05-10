@@ -69,7 +69,7 @@ GMSMapView *mapView_;
         marker.snippet = [dic[FLICKR_PHOTO_TITLE] description];
         
         // Setting the icon of the marker to be the image:
-        NSData *imgData = [[NSData alloc] initWithContentsOfURL:[FlickrFetcher urlForPhoto:dic format:FlickrPhotoFormatSquare]];
+        NSData *imgData = [[NSData alloc] initWithContentsOfURL:[FlickrFetcher urlForPhoto:dic format:FlickrPhotoFormatThumbnail]];
         UIImage *icon = [[UIImage alloc] initWithData:imgData];
         marker.icon = icon;
         marker.map = mapView_;

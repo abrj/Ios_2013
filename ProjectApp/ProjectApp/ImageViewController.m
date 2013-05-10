@@ -140,8 +140,7 @@
 // Action for pushing the description view when swiping.
 - (IBAction)showDescription:(UISwipeGestureRecognizer *)sender {
     PhotoDescriptionVC *photoDescVC = [[PhotoDescriptionVC alloc] init];
-    photoDescVC.description = [[self.image valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
-    photoDescVC.location = [self.image[FLICKR_PLACE_NAME] description];
+    [photoDescVC importPhotoInfo:[FlickrFetcher getPhotoInfo:self.image[FLICKR_PHOTO_ID]]];
     [photoDescVC setTitle:self.title];
     [self.navigationController pushViewController:photoDescVC animated:YES];
 }
