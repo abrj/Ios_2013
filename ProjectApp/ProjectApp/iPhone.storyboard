@@ -62,14 +62,14 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4z-zy-9la">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="315" id="WFj-7M-ggD"/>
                                     <constraint firstAttribute="height" constant="232" id="nDS-b2-dYX"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0JZ-YX-dke" firstAttribute="centerX" secondItem="776-cX-CDC" secondAttribute="centerX" type="default" id="5MJ-pX-7y6"/>
+                            <constraint firstItem="0JZ-YX-dke" firstAttribute="centerX" secondItem="c4z-zy-9la" secondAttribute="centerX" type="default" id="4dX-d2-ttv"/>
+                            <constraint firstItem="c4z-zy-9la" firstAttribute="trailing" secondItem="776-cX-CDC" secondAttribute="trailing" type="default" id="96h-Pu-tFe"/>
                             <constraint firstItem="mhQ-4L-qK6" firstAttribute="baseline" secondItem="kX7-n8-NRd" secondAttribute="baseline" type="default" id="HjG-gn-Z8U"/>
                             <constraint firstAttribute="trailing" secondItem="mhQ-4L-qK6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="MVD-5O-den"/>
                             <constraint firstItem="0JZ-YX-dke" firstAttribute="top" secondItem="c4z-zy-9la" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="STt-D6-nvo"/>
@@ -128,12 +128,12 @@
                                     <action selector="prepareForUpload:" destination="HhL-Qp-3Wh" eventType="touchUpInside" id="3g1-XQ-fsD"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1P-2f-CMl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="r1P-2f-CMl">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="66S-gw-C83"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1g0-vF-lKI">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -141,7 +141,7 @@
                                     <constraint firstAttribute="height" constant="124" id="BAG-3v-Ftl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SDH-tR-LEY"/>
                         </subviews>
@@ -352,6 +352,7 @@
         <class className="ImageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
             <relationships>
+                <relationship kind="action" name="showDescription:" candidateClass="UISwipeGestureRecognizer"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="txtScrollView" candidateClass="UIScrollView"/>
             </relationships>
@@ -380,6 +381,7 @@
         <class className="PhotoUploaderVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoUploaderVC.h"/>
             <relationships>
+                <relationship kind="action" name="prepareForUpload:"/>
                 <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="titleText" candidateClass="UITextField"/>

@@ -25,8 +25,15 @@ static NSString *frob = nil;
 {
     
     //Check the token at Flickr
+    [self setToken:[[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"accessToken"]];
     if([self getToken]){
+        if([self checkToken]){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenFetchedAndSet" object:nil];
+        }
+        else{
+            [self openBrowserForFlickrPermission];
+        }
     }
     
     else{
@@ -38,14 +45,20 @@ static NSString *frob = nil;
 
 +(BOOL)checkToken
 {
-    NSString *api_sig = [self md5Hash:[NSString stringWithFormat:@"%@api_key%@auth_token%@methodflickr.auth.getToken", SECRECT_KEY, API_KEY, [self getToken]]];
-     NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.auth.checkToken&api_key=%@&auth_token=%@&api_sig=%@", API_KEY, [self getToken], api_sig]];
+    NSString *api_sig = [self md5Hash:[NSString stringWithFormat:@"%@api_key%@auth_token%@formatjsonmethodflickr.auth.checkToken", SECRECT_KEY, API_KEY, [self getToken]]];
+     NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.auth.checkToken&api_key=%@&format=json&auth_token=%@&api_sig=%@", API_KEY, [self getToken], api_sig]];
     NSError *error;
     NSData* data = [NSData dataWithContentsOfURL:requestURL options:NSDataReadingUncached error:&error];
     
     NSString *strResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"checking token. response is : %@", strResponse);
-    return YES;
+    NSRange rangeValue = [strResponse rangeOfString:@"invalid" options:NSCaseInsensitiveSearch];
+    if (rangeValue.length > 0){
+        return false;
+    } else{
+        return true;
+    }
+
 }
 +(void)setToken:(NSString*)newValue
 {
@@ -106,6 +119,8 @@ static NSString *frob = nil;
     NSString *strResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     self.token = [self ResponseUrlToToken:strResponse];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenFetchedAndSet" object:nil];
+    [[NSUserDefaults standardUserDefaults]
+     setObject:[self getToken] forKey:@"accessToken"];
 }
 
 //Parses the result from flickr.auth.getToken into a token string

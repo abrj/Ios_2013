@@ -15,13 +15,14 @@
 
 
 
-@interface PhotoUploaderVC ()
+@interface PhotoUploaderVC () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) NSString *frob;
 @property (strong, nonatomic) NSString *token;
-@property (weak, nonatomic) IBOutlet UITextField *titleText;
+@property (strong, nonatomic) IBOutlet UITextField *titleText;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (nonatomic) Boolean isUploading;
 
 
 @end
@@ -38,19 +39,29 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.isUploading = NO;
+    //Sets up the textView borders
     self.descriptionText.layer.borderWidth = 1;
     [self.descriptionText.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
     [self.descriptionText.layer setBorderColor: [[UIColor brownColor] CGColor]];
     [self.descriptionText.layer setBorderWidth: 1.0];
     [self.descriptionText.layer setCornerRadius:8.0f];
     [self.descriptionText.layer setMasksToBounds:YES];
+    
+    //set delegates for textfields
+    self.titleText.delegate = self;
+    self.descriptionText.delegate = self;
+    
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.spinner stopAnimating];
+}
 - (IBAction)prepareForUpload:(id)sender
 {
     //Add observer to 'tokenFetchedAndSet' and calls uploadImage, when the notifcation is raised
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadImage) name:@"tokenFetchedAndSet" object:nil];
-    [self.spinner startAnimating];
     [FlickrAuthentication getAcessToken];
 }
 
@@ -68,10 +79,27 @@
     [super touchesBegan:touches withEvent:event];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.titleText) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if([text isEqualToString:@"\n"])
+    {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 
 -(void)uploadImage
 {
-    
+    if(self.isUploading == NO){
     NSString *desc = self.descriptionText.text;
     NSString *tag = @"iosProject2013";
     self.token = [FlickrAuthentication getToken];
@@ -127,11 +155,23 @@
     
     // create the connection with the request
     // and start loading the data
+    [self.spinner startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    self.isUploading = YES;
     NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [theConnection start];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload in progress!"
+                                                        message:@"One of your pictures is still uploading to Flickr. Please try again later"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
   
 }
+
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -145,6 +185,7 @@
     NSLog(@"String sent from server %@",[[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding]);
     [self.spinner stopAnimating];
      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    self.isUploading = NO;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload complete!"
                                                     message:@"Your picture has been uploaded to your account at Flickr"
                                                    delegate:nil
