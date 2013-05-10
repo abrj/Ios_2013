@@ -40,6 +40,8 @@
 {
     [super viewDidAppear:animated];
     self.isUploading = NO;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+
     //Sets up the textView borders
     self.descriptionText.layer.borderWidth = 1;
     [self.descriptionText.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
@@ -99,6 +101,7 @@
 
 -(void)uploadImage
 {
+    //Checking if a upload already is in progress
     if(self.isUploading == NO){
     NSString *desc = self.descriptionText.text;
     NSString *tag = @"iosProject2013";
@@ -161,6 +164,7 @@
     NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [theConnection start];
     }
+    //Displayed if a upload already is in progress
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload in progress!"
                                                         message:@"One of your pictures is still uploading to Flickr. Please try again later"

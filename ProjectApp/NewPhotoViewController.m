@@ -10,6 +10,8 @@
 
 @interface NewPhotoViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *pickPhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *photoNewButton;
+@property (weak, nonatomic) IBOutlet UIButton *existingPhotoButton;
 
 @end
 
@@ -19,7 +21,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+
 }
 
 -(void)viewDidLoad
