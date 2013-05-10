@@ -9,11 +9,23 @@
 #import "NewPhotoViewController.h"
 
 @interface NewPhotoViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *pickPhotoButton;
 
 @end
 
 @implementation NewPhotoViewController
 
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
+-(void)viewDidLoad
+{
+    [self pickPhotoButton].hidden = YES;
+}
 -(IBAction)TakePhoto{
     picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
@@ -35,6 +47,7 @@
 {
     image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [imageView setImage:image];
+    [self pickPhotoButton].hidden = NO;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

@@ -26,18 +26,20 @@ static NSString *frob = nil;
     
     //Check the token at Flickr
     if([self getToken]){
-        [self checkToken];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenFetchedAndSet" object:nil];
     }
     
-    //else
-    [self openBrowserForFlickrPermission];
+    else{
+        [self openBrowserForFlickrPermission];
+    }
+    
 }
 
 
 +(BOOL)checkToken
 {
-    NSString *api_sig = [self md5Hash:[NSString stringWithFormat:@"%@api_key%@auth_token%@", SECRECT_KEY, API_KEY, [self getToken]]];
-     NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.auth.checkToken&api_key=%@&auth_token=%@&&api_sig=%@", API_KEY, [self getToken], api_sig]];
+    NSString *api_sig = [self md5Hash:[NSString stringWithFormat:@"%@api_key%@auth_token%@methodflickr.auth.getToken", SECRECT_KEY, API_KEY, [self getToken]]];
+     NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.auth.checkToken&api_key=%@&auth_token=%@&api_sig=%@", API_KEY, [self getToken], api_sig]];
     NSError *error;
     NSData* data = [NSData dataWithContentsOfURL:requestURL options:NSDataReadingUncached error:&error];
     

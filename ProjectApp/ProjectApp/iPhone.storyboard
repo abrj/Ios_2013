@@ -16,7 +16,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="bLQ-qS-kYY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="13"/>
                                 <state key="normal" title="New photo">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,8 +48,8 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="IvJ-M6-5ay"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Pick Photo">
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="13"/>
+                                <state key="normal" title="PickPhoto">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -77,13 +77,13 @@
                             <constraint firstItem="c4z-zy-9la" firstAttribute="centerX" secondItem="0JZ-YX-dke" secondAttribute="centerX" type="default" id="nhh-KQ-aHE"/>
                             <constraint firstItem="c4z-zy-9la" firstAttribute="centerX" secondItem="776-cX-CDC" secondAttribute="centerX" type="default" id="rJk-BI-UYx"/>
                             <constraint firstItem="kX7-n8-NRd" firstAttribute="leading" secondItem="776-cX-CDC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="sdh-jn-gE8"/>
-                            <constraint firstItem="mhQ-4L-qK6" firstAttribute="top" secondItem="kX7-n8-NRd" secondAttribute="top" type="default" id="yV1-mm-lKX"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="1xh-KA-HYi"/>
                     <connections>
                         <outlet property="imageView" destination="c4z-zy-9la" id="myP-ir-fLP"/>
+                        <outlet property="pickPhotoButton" destination="0JZ-YX-dke" id="EsF-lA-0D3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXJ-xl-Q4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,45 +348,6 @@
             <point key="canvasLocation" x="639" y="40"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ImageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showDescription:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="txtScrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NewPhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPhotoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="ChooseExistingPhoto"/>
-                <relationship kind="action" name="TakePhoto"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="PhotoDescriptionVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoDescriptionVC.h"/>
-        </class>
-        <class className="PhotoListTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoListTVC.h"/>
-        </class>
-        <class className="PhotoUploaderVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoUploaderVC.h"/>
-            <relationships>
-                <relationship kind="action" name="prepareForUpload:"/>
-                <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="titleText" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

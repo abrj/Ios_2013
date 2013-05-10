@@ -42,6 +42,8 @@
     [FlickrAuthentication getAcessToken];
 }
 
+
+//Makes the keyboard hide, if the user touched outside of the keyboard or textfield
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
@@ -50,6 +52,7 @@
     }
     [super touchesBegan:touches withEvent:event];
 }
+
 
 -(void)uploadImage
 {
