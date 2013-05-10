@@ -12,5 +12,7 @@
 @interface PhotoUploaderVC : UIViewController
 @property (strong, nonatomic) NSData *pickedImage;
 
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection;
+
 @end
 

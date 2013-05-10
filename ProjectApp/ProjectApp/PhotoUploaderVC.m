@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) NSString *frob;
 @property (strong, nonatomic) NSString *token;
+
 @end
 
 @implementation PhotoUploaderVC
@@ -29,6 +30,7 @@
 //71eb97fcc2b15929api_key32742afe2ba425586223d166cf86bb94frob72157633458824100-a1a18c5c0f785718-95576137methodflickr.auth.getToken
 #define API_KEY @"32742afe2ba425586223d166cf86bb94"
 #define SECRECT_KEY @"71eb97fcc2b15929"
+#define FLICKR_UPLOAD_URL @"http://api.flickr.com/services/upload"
 -(void) setPickedImage:(NSData *)pickedImage
 {
     _pickedImage = pickedImage;
@@ -64,7 +66,7 @@
     NSString *strResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"%@",strResponse);
     self.token = [self ResponseUrlToToken:strResponse];
-    [self testUploadImage];
+    [self testupload];
 }
 
 -(NSString *)ResponseUrlToToken:(NSString*)responseString
@@ -114,42 +116,64 @@
     [[UIApplication sharedApplication] openURL:url];
 }
 
--(void)testUploadImage
+-(void)testupload
 {
-    
     NSString *uploadSig = [self md5Hash:[NSString stringWithFormat:@"%@api_key%@auth_token%@", SECRECT_KEY, API_KEY, self.token]];
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    NSString *url = [NSString stringWithFormat:@"http://api.flickr.com/services/upload/"];
-    [request setURL:[NSURL URLWithString:url]];
+    [request setURL:[NSURL URLWithString:FLICKR_UPLOAD_URL]];
     [request setHTTPMethod:@"POST"];
     
-    NSString *boundary = [NSString stringWithString:@"---------------------------7d44e178b0434"];
+    NSString *boundary = @"---------------------------7d44e178b0434";
     
     [request addValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField: @"Content-Type"];
     
     NSMutableData *body = [NSMutableData data];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Disposition: form-data; name=\"api_key\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    
     [body appendData:[[NSString stringWithFormat:@"%@\r\n", API_KEY] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Disposition: form-data; name=\"auth_token\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    
     [body appendData:[[NSString stringWithFormat:@"%@\r\n", self.token] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Disposition: form-data; name=\"api_sig\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
     [body appendData:[[NSString stringWithFormat:@"%@\r\n", uploadSig] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Disposition: form-data; name=\"photo\"; filename=\"photo.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
     UIImage *image =[ UIImage imageNamed:@"smileyImage.jpeg"];
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"photo\"; filename=\"smileyImage.jpeg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
     [body appendData:imageData];
+    
+    
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setHTTPBody:body];
+    
+    // create the connection with the request
+    // and start loading the data
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [theConnection start];
+    
+   
 }
 
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    //NSLog(@"String sent from server %@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
+
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)theData
+{
+    NSLog(@"String sent from server %@",[[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding]);
+}
 
 @end
