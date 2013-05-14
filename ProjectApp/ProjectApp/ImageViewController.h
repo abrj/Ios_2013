@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @property (nonatomic, strong) NSURL *imageURL;
 

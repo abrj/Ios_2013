@@ -271,7 +271,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oIa-tR-Ruk">
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="AQg-rg-BNG"/>
+                                </subviews>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="AQg-rg-BNG" firstAttribute="centerX" secondItem="oIa-tR-Ruk" secondAttribute="centerX" type="default" id="5GW-Po-bIh"/>
+                                    <constraint firstAttribute="bottom" secondItem="AQg-rg-BNG" secondAttribute="bottom" constant="209" id="DQx-ze-tnC"/>
+                                    <constraint firstAttribute="trailing" secondItem="AQg-rg-BNG" secondAttribute="trailing" constant="141" id="Weh-4H-5rL"/>
+                                    <constraint firstItem="AQg-rg-BNG" firstAttribute="centerY" secondItem="oIa-tR-Ruk" secondAttribute="centerY" type="default" id="bJy-8m-ujS"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,6 +299,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="scrollView" destination="oIa-tR-Ruk" id="Hx6-go-ZbU"/>
+                        <outlet property="spinner" destination="AQg-rg-BNG" id="25P-bA-wWU"/>
                         <segue destination="qhd-8r-jHC" kind="push" identifier="Photo Description" id="WvW-pM-KdU"/>
                     </connections>
                 </viewController>
@@ -386,6 +396,56 @@
             <point key="canvasLocation" x="639" y="40"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ImageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showDescription:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="txtScrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageViewController" candidateClass="ImageViewController"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NewPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPhotoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ChooseExistingPhoto"/>
+                <relationship kind="action" name="TakePhoto"/>
+                <relationship kind="outlet" name="existingPhotoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="photoNewButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pickPhotoButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="PhotoDescriptionVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoDescriptionVC.h"/>
+        </class>
+        <class className="PhotoListTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoListTVC.h"/>
+        </class>
+        <class className="PhotoUploaderVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoUploaderVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="titleText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
