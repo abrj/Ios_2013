@@ -251,6 +251,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="1X7-3x-4vh"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="4Vs-Oe-JdY">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshControl:" destination="kxS-PQ-iJo" eventType="valueChanged" id="YqN-ps-dLE"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="688-IF-dWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -380,48 +386,6 @@
             <point key="canvasLocation" x="639" y="40"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ImageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="txtScrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NewPhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPhotoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="ChooseExistingPhoto"/>
-                <relationship kind="action" name="TakePhoto"/>
-                <relationship kind="outlet" name="existingPhotoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="photoNewButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="pickPhotoButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="PhotoDescriptionVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoDescriptionVC.h"/>
-        </class>
-        <class className="PhotoListTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoListTVC.h"/>
-        </class>
-        <class className="PhotoUploaderVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoUploaderVC.h"/>
-            <relationships>
-                <relationship kind="action" name="prepareForUpload:"/>
-                <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="titleText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

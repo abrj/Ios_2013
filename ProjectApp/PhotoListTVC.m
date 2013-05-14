@@ -11,6 +11,8 @@
 
 
 @implementation PhotoListTVC
+- (IBAction)refreshControl:(id)sender {
+}
 
 - (void)setPhotos:(NSArray *)photos
 {
@@ -22,7 +24,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.photos = [FlickrFetcher getAllPhotos];
+    [self loadLatestPhotosFromFlickr];
+    //Hooks up the refreshcontrol for the selector method
+    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,6 +35,32 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void)refresh:(UIRefreshControl *)sender
+{
+    [self loadLatestPhotosFromFlickr];
+}
+
+- (void)loadLatestPhotosFromFlickr
+{
+    // start the animation if it's not already going
+    [self.refreshControl beginRefreshing];
+    //start the network indicator
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    // fork off the Flickr fetch into another thread
+    dispatch_queue_t loaderQ = dispatch_queue_create("flickr latest loader", NULL);
+    dispatch_async(loaderQ, ^{
+        // call Flickr
+        NSArray *latestPhotos = [FlickrFetcher getAllPhotos];
+        // when we have the results, use main queue to display them
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.photos = latestPhotos; // makes UIKit calls, so must be main thread
+            [self.refreshControl endRefreshing];  // stop the animation
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;     //hide the network indicator
+
+            
+        });
+    });
+}
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

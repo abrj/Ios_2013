@@ -17,7 +17,6 @@
 
 @implementation FlickrAuthentication
 
-
 static NSString *token = nil;
 static NSString *frob = nil;
 
