@@ -144,44 +144,62 @@
                                     <constraint firstAttribute="width" constant="208" id="66S-gw-C83"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1g0-vF-lKI">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="124" id="BAG-3v-Ftl"/>
+                                    <constraint firstAttribute="height" constant="124" type="user" id="BAG-3v-Ftl"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SDH-tR-LEY"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNC-d8-cZs">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" type="user" id="lLm-j3-c9X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="13"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0fl-ip-Z1t">
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="11"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SDH-tR-LEY" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="171" id="0nW-0b-3KM"/>
+                            <constraint firstItem="0fl-ip-Z1t" firstAttribute="trailing" secondItem="1g0-vF-lKI" secondAttribute="trailing" type="default" id="1XX-Nc-1Id"/>
                             <constraint firstItem="SDH-tR-LEY" firstAttribute="centerX" secondItem="Im8-sE-vaP" secondAttribute="centerX" type="default" id="4Ia-5O-lHb"/>
-                            <constraint firstItem="e96-gt-rTd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FRH-gA-QMb" secondAttribute="top" constant="20" type="user" id="8Ap-pc-990"/>
-                            <constraint firstItem="Mt5-OV-Lgn" firstAttribute="trailing" secondItem="e96-gt-rTd" secondAttribute="trailing" type="default" id="Dcf-nR-f9b"/>
+                            <constraint firstItem="bNC-d8-cZs" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="58f-X6-AWW"/>
+                            <constraint firstItem="0fl-ip-Z1t" firstAttribute="leading" secondItem="r1P-2f-CMl" secondAttribute="leading" type="default" id="7fg-jF-Efs"/>
                             <constraint firstItem="r1P-2f-CMl" firstAttribute="top" secondItem="e96-gt-rTd" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="H2E-h5-qrF"/>
+                            <constraint firstItem="bNC-d8-cZs" firstAttribute="trailing" secondItem="Mt5-OV-Lgn" secondAttribute="trailing" type="default" id="HvY-j6-4Mn"/>
                             <constraint firstAttribute="bottom" secondItem="Im8-sE-vaP" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="J3s-Wb-tL8"/>
                             <constraint firstItem="r1P-2f-CMl" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="73" id="MKv-hc-o0h"/>
-                            <constraint firstItem="e96-gt-rTd" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="20" symbolic="YES" type="user" id="SJ3-RE-Xc4"/>
-                            <constraint firstItem="Mt5-OV-Lgn" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="103" id="XWK-Bt-lA3"/>
-                            <constraint firstItem="1g0-vF-lKI" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="129" id="Zsd-Zp-xee"/>
-                            <constraint firstItem="r1P-2f-CMl" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="56" type="user" id="aGn-P8-ylj"/>
+                            <constraint firstItem="r1P-2f-CMl" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="39" id="Oy6-YN-DZZ"/>
+                            <constraint firstItem="0fl-ip-Z1t" firstAttribute="top" secondItem="bNC-d8-cZs" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="PUP-UH-td7"/>
+                            <constraint firstItem="1g0-vF-lKI" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="169" id="TmF-oe-fE0"/>
+                            <constraint firstItem="Mt5-OV-Lgn" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="143" id="Vil-Uy-rFi"/>
+                            <constraint firstItem="bNC-d8-cZs" firstAttribute="trailing" secondItem="e96-gt-rTd" secondAttribute="trailing" type="default" id="a6B-mT-WQ7"/>
                             <constraint firstItem="e96-gt-rTd" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cJ9-Mm-Qoc"/>
                             <constraint firstItem="Mt5-OV-Lgn" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dLX-Ea-aUj"/>
-                            <constraint firstItem="r1P-2f-CMl" firstAttribute="leading" secondItem="1g0-vF-lKI" secondAttribute="leading" type="default" id="ihQ-Wv-825"/>
+                            <constraint firstItem="0fl-ip-Z1t" firstAttribute="leading" secondItem="1g0-vF-lKI" secondAttribute="leading" type="default" id="hGd-nH-CHN"/>
                             <constraint firstItem="Im8-sE-vaP" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="88" id="mWR-fO-8Z7"/>
-                            <constraint firstItem="1g0-vF-lKI" firstAttribute="trailing" secondItem="r1P-2f-CMl" secondAttribute="trailing" type="default" id="oV9-U7-xqh"/>
-                            <constraint firstItem="SDH-tR-LEY" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="171" id="qbK-36-Oen"/>
+                            <constraint firstItem="0fl-ip-Z1t" firstAttribute="trailing" secondItem="r1P-2f-CMl" secondAttribute="trailing" type="default" id="sas-SJ-7FW"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Im8-sE-vaP" secondAttribute="bottom" constant="20" type="user" id="vdQ-xJ-hea"/>
+                            <constraint firstItem="0fl-ip-Z1t" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="107" id="vuJ-iC-1Gr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Upload image" id="gqK-i2-2rA"/>
                     <connections>
                         <outlet property="descriptionText" destination="1g0-vF-lKI" id="eDV-De-hGh"/>
+                        <outlet property="locationText" destination="0fl-ip-Z1t" id="GeG-Y4-Lrj"/>
                         <outlet property="spinner" destination="SDH-tR-LEY" id="AP1-oc-0ME"/>
                         <outlet property="titleText" destination="r1P-2f-CMl" id="LvQ-Cf-JPU"/>
                         <outlet property="uploadButton" destination="Im8-sE-vaP" id="85W-sD-mPp"/>
@@ -400,7 +418,6 @@
         <class className="ImageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
             <relationships>
-                <relationship kind="action" name="showDescription:" candidateClass="UISwipeGestureRecognizer"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="txtScrollView" candidateClass="UIScrollView"/>
@@ -436,7 +453,9 @@
         <class className="PhotoUploaderVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoUploaderVC.h"/>
             <relationships>
+                <relationship kind="action" name="prepareForUpload:"/>
                 <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="locationText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="titleText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>

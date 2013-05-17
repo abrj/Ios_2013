@@ -13,6 +13,7 @@
 #import "FlickrAuthentication.h"
 #import <QuartzCore/QuartzCore.h>
 #import <ImageIO/ImageIO.h>
+#import "AssetsLibrary/AssetsLibrary.h"
 
 
 
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSString *token;
 @property (strong, nonatomic) IBOutlet UITextField *titleText;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
+@property (weak, nonatomic) IBOutlet UITextField *locationText;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (nonatomic) Boolean isUploading;
 @property (weak, nonatomic) IBOutlet UIButton *uploadButton;
@@ -57,6 +59,9 @@
     //Set the background color for textfield
     self.titleText.backgroundColor = [UIColor grayColor];
 
+    //Set the background color for locationTextfield
+    self.locationText.backgroundColor = [UIColor grayColor];
+    
     //set delegates for textfields
     self.titleText.delegate = self;
     self.descriptionText.delegate = self;
@@ -84,18 +89,27 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
+    //Title text field
     if ([self.titleText isFirstResponder] && [touch view] != self.titleText) {
         [self.titleText resignFirstResponder];
     }
+    
+    //Description text field
     if ([self.descriptionText isFirstResponder] && [touch view] != self.descriptionText) {
         [self.descriptionText resignFirstResponder];
     }
+    
+    //Location text field
+    if ([self.locationText isFirstResponder] && [touch view] != self.locationText) {
+        [self.locationText resignFirstResponder];
+    }
+    
     [super touchesBegan:touches withEvent:event];
 }
 
 //Hides the keyboard on return key
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == self.titleText) {
+    if (textField == self.titleText || textField == self.locationText) {
         [textField resignFirstResponder];
     }
     return YES;
@@ -113,10 +127,10 @@
 
 -(void) getLocationFrom:(UIImage *)image
 {
+
+    
     NSData *jpegData = UIImageJPEGRepresentation(image, 1.0);
     CGImageSourceRef imageData= CGImageSourceCreateWithData((__bridge CFDataRef)jpegData, NULL);    //The __bridge is used to cast the NSdata into CFDataRef
-    NSDictionary *metadata = (__bridge NSDictionary *) CGImageSourceCopyPropertiesAtIndex(imageData, 0, NULL);  //The __bridge is used to cast
-    NSDictionary *exifGPSDictionary = [[metadata objectForKey:(NSString *)kCGImagePropertyGPSDictionary]mutableCopy];
     NSDictionary* props = (__bridge NSDictionary*) CGImageSourceCopyPropertiesAtIndex(imageData, 0, NULL);
     NSLog(@"the location is %@", props);
     
@@ -161,6 +175,12 @@
             //Description
             [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"description\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"%@",desc] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            //Location
+            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"location\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[[NSString stringWithFormat:@"%@",desc] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             

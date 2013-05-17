@@ -22,6 +22,7 @@
 		0404E944173C27F4008B2946 /* PhotoUploaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E943173C27F4008B2946 /* PhotoUploaderVC.m */; };
 		0404E947173C2877008B2946 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E946173C2877008B2946 /* AppDelegate.m */; };
 		0433342617464C5A00021A06 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D9A173BA95F0026E0D3 /* ImageIO.framework */; };
+		043334281746586F00021A06 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 043334271746586E00021A06 /* AssetsLibrary.framework */; };
 		04428C57173CE7C20088A376 /* smileyImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04428C56173CE7C20088A376 /* smileyImage.jpeg */; };
 		04428D07173D169D0088A376 /* FlickrAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428D06173D169D0088A376 /* FlickrAuthentication.m */; };
 		06BDC1BC173A923F00611447 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BDC1BB173A923F00611447 /* ImageViewController.m */; };
@@ -70,6 +71,7 @@
 		0404E945173C2877008B2946 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0404E946173C2877008B2946 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0433341E174642FE00021A06 /* libiphone-exif.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libiphone-exif.a"; path = "../../../Downloads/iphone-exif-0-9.1/Release-iphoneos/libiphone-exif.a"; sourceTree = "<group>"; };
+		043334271746586E00021A06 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		04428C56173CE7C20088A376 /* smileyImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smileyImage.jpeg; sourceTree = "<group>"; };
 		04428D05173D169D0088A376 /* FlickrAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAuthentication.h; sourceTree = "<group>"; };
 		04428D06173D169D0088A376 /* FlickrAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrAuthentication.m; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043334281746586F00021A06 /* AssetsLibrary.framework in Frameworks */,
 				0433342617464C5A00021A06 /* ImageIO.framework in Frameworks */,
 				06CD6DB2173D62160026E0D3 /* MapKit.framework in Frameworks */,
 				06CD6DA7173BA9A30026E0D3 /* SystemConfiguration.framework in Frameworks */,
@@ -131,6 +134,7 @@
 		0404E87B173A4B99008B2946 = {
 			isa = PBXGroup;
 			children = (
+				043334271746586E00021A06 /* AssetsLibrary.framework */,
 				0433341E174642FE00021A06 /* libiphone-exif.a */,
 				0404E88D173A4B99008B2946 /* ProjectApp */,
 				0404E886173A4B99008B2946 /* Frameworks */,
