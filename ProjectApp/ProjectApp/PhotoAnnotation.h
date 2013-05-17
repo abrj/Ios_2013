@@ -11,12 +11,6 @@
 
 @interface PhotoAnnotation : NSObject <MKAnnotation>
 
-@property (readwrite, nonatomic) CLLocationCoordinate2D *location;
-@property (readwrite, nonatomic) NSString *title;
-@property (readwrite, nonatomic) NSString *subtitle;
-@property (strong, nonatomic) NSData *urlForPhoto;
-@property (readwrite, nonatomic) NSUInteger *index;
-
-
+@property (strong, nonatomic) NSDictionary *photo;
 
 @end

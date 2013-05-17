@@ -6,28 +6,48 @@
 //  Copyright (c) 2013 Abrj & Kdan. All rights reserved.
 //
 
+#import "FlickrFetcher.h"
 #import "PhotoAnnotation.h"
 
-@implementation PhotoAnnotation 
+@interface PhotoAnnotation ()
 
-- (void) setLocation:(CLLocationCoordinate2D *)location
+@property (readwrite, nonatomic) NSString *title;
+@property (readwrite, nonatomic) NSString *subtitle;
+@property (strong, nonatomic) NSData *urlForPhoto;
+@property (readwrite, nonatomic) NSUInteger index;
+
+@end
+
+
+@implementation PhotoAnnotation
+
+-(void)setPhoto:(NSDictionary *)photo
 {
-    _location = location;
+    _photo = photo;
 }
 
--(void) setTitle:(NSString *)title
+-(CLLocationCoordinate2D)coordinate
 {
-    _title = title;
+    CLLocationCoordinate2D annotationCoord;
+    annotationCoord.latitude = [[[self.photo valueForKeyPath:FLICKR_PHOTO_LOCATION] valueForKeyPath:FLICKR_LATITUDE] doubleValue];
+    annotationCoord.longitude = [[[self.photo valueForKeyPath:FLICKR_PHOTO_LOCATION] valueForKeyPath:FLICKR_LONGITUDE] doubleValue];
+    
+    return annotationCoord;
 }
 
--(void) setSubtitle:(NSString *)subtitle
+-(NSString *)title
 {
-    _subtitle = subtitle;
+    return [[[self.photo valueForKeyPath:FLICKR_PHOTO_TITLE] valueForKeyPath:@"_content"] description];
 }
 
--(void) setUrlForPhoto:(NSData *)urlForPhoto
+-(NSString *)subtitle
 {
-    _urlForPhoto = urlForPhoto;
+    return [[self.photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
+}
+
+-(NSData *)urlForPhoto
+{
+    return nil;
 }
 
 @end

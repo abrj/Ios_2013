@@ -40,13 +40,10 @@ typedef enum AnnotationIndex : NSUInteger
     [super viewDidLoad];
     [self startStandardUpdates];
     self.photos = [FlickrFetcher getAllPhotos];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
     [self mapSetup];
     [self setAnnotationsForPhotos];
 }
+
 
 
 - (void)setPhotos:(NSArray *)photos
@@ -59,9 +56,10 @@ typedef enum AnnotationIndex : NSUInteger
     self.mapView.showsUserLocation = YES;
     [self.mapView setMapType:MKMapTypeHybrid];
     
-    CLLocationDistance visibleDistance = 1000; // 100 kilometers
+    CLLocationDistance visibleDistance = 100000; // 100 kilometers
    
-    CLLocationCoordinate2D userLoc = CLLocationCoordinate2DMake(0, 0);
+    // Sets the maps starting center point to Copenhagen.
+    CLLocationCoordinate2D userLoc = CLLocationCoordinate2DMake(55.677, 12.561);
     
     if (self.locationManager.location) {
     userLoc = self.locationManager.location.coordinate;
@@ -73,24 +71,12 @@ typedef enum AnnotationIndex : NSUInteger
 
 -(void) setAnnotationsForPhotos
 {
-    self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:self.photos.count];
-    NSUInteger i = 0;
+    
     for (NSDictionary *dic in self.photos)
     {
-        // Create the coordinate for the annotation:
-        CLLocationCoordinate2D annotationCoord;
-        annotationCoord.latitude = [dic[FLICKR_LATITUDE] doubleValue];
-        annotationCoord.longitude = [dic[FLICKR_LONGITUDE] doubleValue];
-        
         PhotoAnnotation *annotation = [[PhotoAnnotation alloc] init];
-        
-        annotation.location = &(annotationCoord);
-        annotation.title = [dic[FLICKR_PHOTO_TITLE] description];
-        annotation.subtitle = [[dic valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
-        annotation.index = &(i);
-        [self.mapAnnotations insertObject:annotation atIndex:*(annotation.index)];
+        annotation.photo = [FlickrFetcher getPhotoInfo:dic[FLICKR_PHOTO_ID]];
         [self.mapView addAnnotation:annotation];
-        i++;
     }
 }
 
@@ -102,10 +88,10 @@ typedef enum AnnotationIndex : NSUInteger
         self.locationManager = [[CLLocationManager alloc] init];
     
     self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     // Set a movement threshold for new events.
-    self.locationManager.distanceFilter = 500;
+    self.locationManager.distanceFilter = 50;
     
     [self.locationManager startUpdatingLocation];
 }
@@ -129,8 +115,6 @@ typedef enum AnnotationIndex : NSUInteger
         return nil;
     }
     
-    // handle our three custom annotations
-    //
     if ([annotation isKindOfClass:[PhotoAnnotation class]]) // for Golden Gate Bridge
     {
         // try to dequeue an existing pin view first
