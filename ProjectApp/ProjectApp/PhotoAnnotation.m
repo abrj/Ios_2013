@@ -13,8 +13,6 @@
 
 @property (readwrite, nonatomic) NSString *title;
 @property (readwrite, nonatomic) NSString *subtitle;
-@property (strong, nonatomic) NSData *urlForPhoto;
-@property (readwrite, nonatomic) NSUInteger index;
 
 @end
 
@@ -43,11 +41,6 @@
 -(NSString *)subtitle
 {
     return [[self.photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
-}
-
--(NSData *)urlForPhoto
-{
-    return nil;
 }
 
 @end

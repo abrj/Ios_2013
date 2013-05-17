@@ -24,7 +24,6 @@ typedef enum AnnotationIndex : NSUInteger
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *mapAnnotations;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-
 @property (nonatomic, strong) IBOutlet ImageViewController *imageViewController;
 
 @end
@@ -54,7 +53,7 @@ typedef enum AnnotationIndex : NSUInteger
 
 - (void)mapSetup {
     self.mapView.showsUserLocation = YES;
-    [self.mapView setMapType:MKMapTypeHybrid];
+    [self.mapView setMapType:MKMapTypeSatellite];
     
     CLLocationDistance visibleDistance = 100000; // 100 kilometers
    
@@ -71,13 +70,15 @@ typedef enum AnnotationIndex : NSUInteger
 
 -(void) setAnnotationsForPhotos
 {
-    
+    self. mapAnnotations = [[NSMutableArray alloc] init];
     for (NSDictionary *dic in self.photos)
     {
         PhotoAnnotation *annotation = [[PhotoAnnotation alloc] init];
         annotation.photo = [FlickrFetcher getPhotoInfo:dic[FLICKR_PHOTO_ID]];
-        [self.mapView addAnnotation:annotation];
+        [self.mapAnnotations addObject:annotation];
     }
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    [self.mapView addAnnotations:self.mapAnnotations];
 }
 
 - (void)startStandardUpdates
@@ -107,50 +108,40 @@ typedef enum AnnotationIndex : NSUInteger
     [self.navigationController pushViewController:self.imageViewController animated:YES];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+- (MKAnnotationView *)mapView:(MKMapView *)mapView
+            viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    // in case it's the user location, we already have an annotation, so just return nil
+    // If it's the user location, just return nil.
     if ([annotation isKindOfClass:[MKUserLocation class]])
-    {
         return nil;
-    }
     
-    if ([annotation isKindOfClass:[PhotoAnnotation class]]) // for Golden Gate Bridge
+    // Handle any custom annotations.
+    if ([annotation isKindOfClass:[PhotoAnnotation class]])
     {
-        // try to dequeue an existing pin view first
-        static NSString *identifier = @"photoAnnotation";
+        // Try to dequeue an existing pin view first.
+        MKPinAnnotationView* pinView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
         
-        MKPinAnnotationView *pinView =
-        (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-        if (pinView == nil)
+        if (!pinView)
         {
-            // if an existing pin view was not available, create one
-            MKPinAnnotationView *customPinView = [[MKPinAnnotationView alloc]
-                                                  initWithAnnotation:annotation reuseIdentifier:identifier];
-            customPinView.pinColor = MKPinAnnotationColorPurple;
-            customPinView.animatesDrop = YES;
-            customPinView.canShowCallout = YES;
+            // If an existing pin view was not available, create one.
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
+            pinView.pinColor = MKPinAnnotationColorPurple;
+            pinView.animatesDrop = YES;
+            pinView.canShowCallout = YES;
             
-            // add a detail disclosure button to the callout which will open a new view controller page
-            //
-            // note: when the detail disclosure button is tapped, we respond to it via:
-            //       calloutAccessoryControlTapped delegate method
-            //
-            // by using "calloutAccessoryControlTapped", it's a convenient way to find out which annotation was tapped
-            //
-            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
-            customPinView.rightCalloutAccessoryView = rightButton;
-            
-            return customPinView;
+            // Add a detail disclosure button to the callout.
+            UIButton* rightButton = [UIButton buttonWithType:
+                                     UIButtonTypeDetailDisclosure];
+            [rightButton addTarget:self action:@selector(myShowDetailsMethod:)
+                  forControlEvents:UIControlEventTouchUpInside];
+            pinView.rightCalloutAccessoryView = rightButton;
         }
         else
-        {
             pinView.annotation = annotation;
-        }
+        
         return pinView;
     }
+    
     return nil;
 }
-
 @end
