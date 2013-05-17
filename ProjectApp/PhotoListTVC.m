@@ -14,6 +14,12 @@
 - (IBAction)refreshControl:(id)sender {
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    [super viewWillAppear:animated];
+}
+
 - (void)setPhotos:(NSArray *)photos
 {
     _photos = photos;

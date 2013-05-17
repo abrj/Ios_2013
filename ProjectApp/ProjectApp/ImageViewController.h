@@ -12,5 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @property (nonatomic, strong) NSURL *imageURL;
-
+- (void) setPhotoInfo:(NSDictionary *)image;
 @end

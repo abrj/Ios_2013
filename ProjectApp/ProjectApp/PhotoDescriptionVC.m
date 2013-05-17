@@ -26,6 +26,12 @@
 #define LABEL_HEIGHT 20.0
 #define SPACE_BETWEEN_LABELS 50.0;
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [super viewWillAppear:animated];
+}
+
 
 - (void)viewDidLoad
 {
