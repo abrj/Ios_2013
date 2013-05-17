@@ -21,6 +21,7 @@
 		0404E8D2173A8A62008B2946 /* PhotoListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8D1173A8A61008B2946 /* PhotoListTVC.m */; };
 		0404E944173C27F4008B2946 /* PhotoUploaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E943173C27F4008B2946 /* PhotoUploaderVC.m */; };
 		0404E947173C2877008B2946 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E946173C2877008B2946 /* AppDelegate.m */; };
+		0433342617464C5A00021A06 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D9A173BA95F0026E0D3 /* ImageIO.framework */; };
 		04428C57173CE7C20088A376 /* smileyImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04428C56173CE7C20088A376 /* smileyImage.jpeg */; };
 		04428D07173D169D0088A376 /* FlickrAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428D06173D169D0088A376 /* FlickrAuthentication.m */; };
 		06BDC1BC173A923F00611447 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BDC1BB173A923F00611447 /* ImageViewController.m */; };
@@ -31,7 +32,6 @@
 		06CD6D95173BA9400026E0D3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D94173BA9400026E0D3 /* CoreLocation.framework */; };
 		06CD6D97173BA94A0026E0D3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D96173BA94A0026E0D3 /* CoreText.framework */; };
 		06CD6D99173BA9530026E0D3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D98173BA9530026E0D3 /* GLKit.framework */; };
-		06CD6D9B173BA95F0026E0D3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D9A173BA95F0026E0D3 /* ImageIO.framework */; };
 		06CD6D9D173BA9710026E0D3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D9C173BA9710026E0D3 /* libc++.dylib */; };
 		06CD6D9F173BA97D0026E0D3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D9E173BA97D0026E0D3 /* libicucore.dylib */; };
 		06CD6DA1173BA98A0026E0D3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6DA0173BA98A0026E0D3 /* libz.dylib */; };
@@ -69,6 +69,7 @@
 		0404E943173C27F4008B2946 /* PhotoUploaderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUploaderVC.m; sourceTree = "<group>"; };
 		0404E945173C2877008B2946 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0404E946173C2877008B2946 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0433341E174642FE00021A06 /* libiphone-exif.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libiphone-exif.a"; path = "../../../Downloads/iphone-exif-0-9.1/Release-iphoneos/libiphone-exif.a"; sourceTree = "<group>"; };
 		04428C56173CE7C20088A376 /* smileyImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smileyImage.jpeg; sourceTree = "<group>"; };
 		04428D05173D169D0088A376 /* FlickrAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAuthentication.h; sourceTree = "<group>"; };
 		04428D06173D169D0088A376 /* FlickrAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrAuthentication.m; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0433342617464C5A00021A06 /* ImageIO.framework in Frameworks */,
 				06CD6DB2173D62160026E0D3 /* MapKit.framework in Frameworks */,
 				06CD6DA7173BA9A30026E0D3 /* SystemConfiguration.framework in Frameworks */,
 				06CD6DA5173BA99E0026E0D3 /* QuartzCore.framework in Frameworks */,
@@ -111,7 +113,6 @@
 				06CD6DA1173BA98A0026E0D3 /* libz.dylib in Frameworks */,
 				06CD6D9F173BA97D0026E0D3 /* libicucore.dylib in Frameworks */,
 				06CD6D9D173BA9710026E0D3 /* libc++.dylib in Frameworks */,
-				06CD6D9B173BA95F0026E0D3 /* ImageIO.framework in Frameworks */,
 				06CD6D99173BA9530026E0D3 /* GLKit.framework in Frameworks */,
 				06CD6D97173BA94A0026E0D3 /* CoreText.framework in Frameworks */,
 				06CD6D95173BA9400026E0D3 /* CoreLocation.framework in Frameworks */,
@@ -130,6 +131,7 @@
 		0404E87B173A4B99008B2946 = {
 			isa = PBXGroup;
 			children = (
+				0433341E174642FE00021A06 /* libiphone-exif.a */,
 				0404E88D173A4B99008B2946 /* ProjectApp */,
 				0404E886173A4B99008B2946 /* Frameworks */,
 				0404E885173A4B99008B2946 /* Products */,
@@ -418,6 +420,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectApp/ProjectApp-Prefix.pch";
 				INFOPLIST_FILE = "ProjectApp/ProjectApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Downloads/iphone-exif-0-9.1/Release-iphoneos\"",
+					"\"$(SRCROOT)/../../../Downloads/iphone-exif-0-9.1/Release-simulator-iphonesimulator\"",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -434,6 +442,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProjectApp/ProjectApp-Prefix.pch";
 				INFOPLIST_FILE = "ProjectApp/ProjectApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Downloads/iphone-exif-0-9.1/Release-iphoneos\"",
+					"\"$(SRCROOT)/../../../Downloads/iphone-exif-0-9.1/Release-simulator-iphonesimulator\"",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

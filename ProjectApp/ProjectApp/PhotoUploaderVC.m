@@ -12,6 +12,8 @@
 #import "FlickrFetcher.h"
 #import "FlickrAuthentication.h"
 #import <QuartzCore/QuartzCore.h>
+#import <ImageIO/ImageIO.h>
+
 
 
 
@@ -42,6 +44,7 @@
     [super viewDidAppear:animated];
     self.isUploading = NO;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self getLocationFrom:self.pickedImage];
 
     //Sets up the textView borders
     self.descriptionText.layer.borderWidth = 1;
@@ -67,6 +70,8 @@
 {
     [self.spinner stopAnimating];
 }
+
+
 - (IBAction)prepareForUpload:(id)sender
 {
     //Add observer to 'tokenFetchedAndSet' and calls uploadImage, when the notifcation is raised
@@ -106,6 +111,19 @@
     return YES;
 }
 
+-(void) getLocationFrom:(UIImage *)image
+{
+    NSData *jpegData = UIImageJPEGRepresentation(image, 1.0);
+    CGImageSourceRef imageData= CGImageSourceCreateWithData((__bridge CFDataRef)jpegData, NULL);    //The __bridge is used to cast the NSdata into CFDataRef
+    NSDictionary *metadata = (__bridge NSDictionary *) CGImageSourceCopyPropertiesAtIndex(imageData, 0, NULL);  //The __bridge is used to cast
+    NSDictionary *exifGPSDictionary = [[metadata objectForKey:(NSString *)kCGImagePropertyGPSDictionary]mutableCopy];
+    NSDictionary* props = (__bridge NSDictionary*) CGImageSourceCopyPropertiesAtIndex(imageData, 0, NULL);
+    NSLog(@"the location is %@", props);
+    
+}
+
+    
+    
 
 -(void)uploadImage
 {
