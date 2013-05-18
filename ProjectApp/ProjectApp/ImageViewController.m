@@ -32,7 +32,7 @@
     self.scrollView.minimumZoomScale = 0.2;
     self.scrollView.maximumZoomScale = 5.0;
     self.scrollView.delegate = self;
-    [self resetImage2];
+    [self resetImage];
     
     // Making sure the back button shows "Back" instead of the title of the parent VC.
     self.navigationItem.backBarButtonItem =
@@ -41,6 +41,7 @@
                                     target:nil
                                     action:nil];
 }
+
 
 -(void)scrollViewDidZoom:(UIScrollView *)scrollView {
     [self centerScrollViewContents];;
@@ -68,7 +69,7 @@
 - (void)setImageURL:(NSURL *)imageURL
 {
     _imageURL = imageURL;
-    [self resetImage2];
+    [self resetImage];
 }
 
 - (void) setPhotoInfo:(NSDictionary *)image
@@ -77,34 +78,13 @@
     [self setImageURL:[FlickrFetcher urlForPhoto:image format:FlickrPhotoFormatLarge]];
 }
 
+
 // fetches the data from the URL
 // turns it into an image
 // adjusts the scroll view's content size to fit the image
 // sets the image as the image view's image
-
-
-//Sets the picture in the center, but is lacking thread control
+// Using threads
 - (void)resetImage
-{
-    if (self.scrollView) {
-        self.scrollView.contentSize = CGSizeZero;
-        self.imageView.image = nil;
-        
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        if (image) {
-            self.scrollView.contentSize = image.size;
-            self.imageView.image = image;
-            self.imageView.frame = CGRectMake(0,
-                                              0,
-                                              image.size.width,
-                                              image.size.height);
-        }
-    }
-}
-
-//Have implemented thread control, but is for some reason, not setting the picture in the center like the method above
-- (void)resetImage2
 {
     if (self.scrollView) {
         self.scrollView.contentSize = CGSizeZero;
@@ -179,11 +159,20 @@
 
 // Action for pushing the description view when swiping.
 - (IBAction)showDescription:(UISwipeGestureRecognizer *)sender {
-    PhotoDescriptionVC *photoDescVC = [[PhotoDescriptionVC alloc] init];
-    [photoDescVC importPhotoInfo:[FlickrFetcher getPhotoInfo:self.image[FLICKR_PHOTO_ID]]];
-    [photoDescVC setTitle:self.title];
-    [self.navigationController pushViewController:photoDescVC animated:YES];
+    [self performSegueWithIdentifier:@"Photo Description" sender:self.image];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([sender isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *image = sender;
+        if ([segue.identifier isEqualToString:@"Photo Description"]) {
+            if ([segue.destinationViewController respondsToSelector:@selector(setPhotoInfo:)]) {
+                [segue.destinationViewController performSelector:@selector(importPhotoInfo:) withObject:[FlickrFetcher getPhotoInfo:image[FLICKR_PHOTO_ID]]];
+                [segue.destinationViewController setTitle:self.title];
+            }
+        }
+    }
+}
 
 @end

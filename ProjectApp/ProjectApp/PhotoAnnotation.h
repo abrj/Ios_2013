@@ -12,5 +12,6 @@
 @interface PhotoAnnotation : NSObject <MKAnnotation>
 
 @property (strong, nonatomic) NSDictionary *photo;
+@property (strong, nonatomic) NSDictionary *photoForURL;
 
 @end
