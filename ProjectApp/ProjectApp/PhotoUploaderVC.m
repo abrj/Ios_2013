@@ -256,8 +256,11 @@
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
+    //Sends a notification that the photo have been uploaded
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PhotoUploaded" object:self];
     [alert show];
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 @end

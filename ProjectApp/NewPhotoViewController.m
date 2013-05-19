@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *pickPhotoButton;
 @property (weak, nonatomic) IBOutlet UIButton *photoNewButton;
 @property (weak, nonatomic) IBOutlet UIButton *existingPhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *returnButton;
 
 @end
 
@@ -28,15 +29,31 @@
     self.pickPhotoButton.layer.cornerRadius = 8.0f;
     self.photoNewButton.layer.cornerRadius = 8.0f;
     self.existingPhotoButton.layer.cornerRadius = 8.0f;
-
 }
 
 
 -(void)viewDidLoad
 {
+    //Hides the two buttons
     [self pickPhotoButton].hidden = YES;
+    [self returnButton].hidden = YES;
+    
+    //Adds an observer to self and waits for notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(hidePhotoFromViewOnNotifaction:)
+                                                 name:@"PhotoUploaded"
+                                               object:nil];
 }
 
+-(void)hidePhotoFromViewOnNotifaction:(NSNotification *)notification
+{
+    imageView.image = nil;
+    [self existingPhotoButton].hidden = NO;
+    [self photoNewButton].hidden = NO;
+    [self pickPhotoButton].hidden = YES;
+    [self returnButton].hidden = YES;
+    
+}
 //Disable rotation to landscape mode
 - (BOOL)shouldAutorotate
 {
@@ -65,12 +82,23 @@
     image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [imageView setImage:image];
     [self pickPhotoButton].hidden = NO;
+    [self returnButton].hidden = NO;
+    [self existingPhotoButton].hidden = YES;
+    [self photoNewButton].hidden = YES;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+- (IBAction)return:(id)sender
+{
+    imageView.image = nil;
+    [self existingPhotoButton].hidden = NO;
+    [self photoNewButton].hidden = NO;
+    [self pickPhotoButton].hidden = YES;
+    [self returnButton].hidden = YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -29,7 +29,8 @@ typedef enum AnnotationIndex : NSUInteger
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 // Properties for the tableview:
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation MapViewController
@@ -58,6 +59,9 @@ typedef enum AnnotationIndex : NSUInteger
                                      style:UIBarButtonItemStyleBordered
                                     target:nil
                                     action:nil];
+    
+    //Adds the refreshControl
+    [self addRefreshControlToTableView];
 
 }
 
@@ -234,32 +238,45 @@ typedef enum AnnotationIndex : NSUInteger
     [self performSegueWithIdentifier:@"showImage" sender:annotation];
 }
 
-//-(void)refresh:(UIRefreshControl *)sender
-//{
-//    [self loadLatestPhotosFromFlickr];
-//}
+-(void)addRefreshControlToTableView
+{
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self.tableView action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    //self.refreshControl = refreshControl;
+    
+    //ADD THE REFRESHCONTROL TO THE PROPERTY HERE
+    
+}
 
-//- (void)loadLatestPhotosFromFlickr
-//{
-//    // start the animation if it's not already going
-//    [self.refreshControl beginRefreshing];
-//    //start the network indicator
-//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-//    // fork off the Flickr fetch into another thread
-//    dispatch_queue_t loaderQ = dispatch_queue_create("flickr latest loader", NULL);
-//    dispatch_async(loaderQ, ^{
-//        // call Flickr
-//        NSArray *latestPhotos = [FlickrFetcher getAllPhotos];
-//        // when we have the results, use main queue to display them
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            self.photos = latestPhotos; // makes UIKit calls, so must be main thread
-//            [self.refreshControl endRefreshing];  // stop the animation
-//            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;     //hide the network indicator
-//            
-//            
-//        });
-//    });
-//}
+-(void)refresh:(UIRefreshControl *)sender
+{
+    [self loadLatestPhotosFromFlickr];
+}
+
+- (void)loadLatestPhotosFromFlickr
+{
+    // start the animation if it's not already going
+    if(self.refreshControl){
+    [self.refreshControl beginRefreshing];
+    }
+    //start the network indicator
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    // fork off the Flickr fetch into another thread
+    dispatch_queue_t loaderQ = dispatch_queue_create("flickr latest loader", NULL);
+    dispatch_async(loaderQ, ^{
+        // call Flickr
+        NSArray *latestPhotos = [FlickrFetcher getAllPhotos];
+        // when we have the results, use main queue to display them
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.photos = latestPhotos; // makes UIKit calls, so must be main thread
+            [self.refreshControl endRefreshing];  // stop the animation
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;     //hide the network indicator
+            
+            
+        });
+    });
+}
 
 // The prepareForSegue method. Called whenever an image is to be shown.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

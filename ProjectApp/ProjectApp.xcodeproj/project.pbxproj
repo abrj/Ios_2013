@@ -16,13 +16,13 @@
 		0404E89C173A4B99008B2946 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E89B173A4B99008B2946 /* Default@2x.png */; };
 		0404E89E173A4B99008B2946 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E89D173A4B99008B2946 /* Default-568h@2x.png */; };
 		0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */; };
-		0404E8BC173A5104008B2946 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0404E8BB173A5104008B2946 /* iPhone.storyboard */; };
 		0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8BE173A538A008B2946 /* NewPhotoViewController.m */; };
 		0404E8D2173A8A62008B2946 /* PhotoListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8D1173A8A61008B2946 /* PhotoListTVC.m */; };
 		0404E944173C27F4008B2946 /* PhotoUploaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E943173C27F4008B2946 /* PhotoUploaderVC.m */; };
 		0404E947173C2877008B2946 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E946173C2877008B2946 /* AppDelegate.m */; };
 		0433342617464C5A00021A06 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D9A173BA95F0026E0D3 /* ImageIO.framework */; };
 		043334281746586F00021A06 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 043334271746586E00021A06 /* AssetsLibrary.framework */; };
+		0433342A1748EB9E00021A06 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043334291748EB9E00021A06 /* iPhone.storyboard */; };
 		04428C57173CE7C20088A376 /* smileyImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04428C56173CE7C20088A376 /* smileyImage.jpeg */; };
 		04428D07173D169D0088A376 /* FlickrAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428D06173D169D0088A376 /* FlickrAuthentication.m */; };
 		06BDC1BC173A923F00611447 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BDC1BB173A923F00611447 /* ImageViewController.m */; };
@@ -61,7 +61,6 @@
 		0404E8B1173A4CD0008B2946 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		0404E8B2173A4CD0008B2946 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
-		0404E8BB173A5104008B2946 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		0404E8BD173A538A008B2946 /* NewPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPhotoViewController.h; path = ../NewPhotoViewController.h; sourceTree = "<group>"; };
 		0404E8BE173A538A008B2946 /* NewPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPhotoViewController.m; path = ../NewPhotoViewController.m; sourceTree = "<group>"; };
 		0404E8D0173A8A61008B2946 /* PhotoListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoListTVC.h; path = ../PhotoListTVC.h; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 		0404E946173C2877008B2946 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0433341E174642FE00021A06 /* libiphone-exif.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libiphone-exif.a"; path = "../../../Downloads/iphone-exif-0-9.1/Release-iphoneos/libiphone-exif.a"; sourceTree = "<group>"; };
 		043334271746586E00021A06 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		043334291748EB9E00021A06 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		04428C56173CE7C20088A376 /* smileyImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smileyImage.jpeg; sourceTree = "<group>"; };
 		04428D05173D169D0088A376 /* FlickrAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAuthentication.h; sourceTree = "<group>"; };
 		04428D06173D169D0088A376 /* FlickrAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrAuthentication.m; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 		0404E8D8173A8ED5008B2946 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				0404E8BB173A5104008B2946 /* iPhone.storyboard */,
+				043334291748EB9E00021A06 /* iPhone.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -309,9 +309,9 @@
 				0404E89A173A4B99008B2946 /* Default.png in Resources */,
 				0404E89C173A4B99008B2946 /* Default@2x.png in Resources */,
 				0404E89E173A4B99008B2946 /* Default-568h@2x.png in Resources */,
-				0404E8BC173A5104008B2946 /* iPhone.storyboard in Resources */,
 				06CD6D8F173BA89F0026E0D3 /* GoogleMaps.bundle in Resources */,
 				04428C57173CE7C20088A376 /* smileyImage.jpeg in Resources */,
+				0433342A1748EB9E00021A06 /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
