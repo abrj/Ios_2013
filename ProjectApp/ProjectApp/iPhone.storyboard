@@ -14,26 +14,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4z-zy-9la">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="284" id="vQm-a2-4WO"/>
+                                    <constraint firstAttribute="height" constant="252" id="OwM-nm-9AP"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kX7-n8-NRd">
-                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="xWb-Ee-4dn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="13"/>
-                                <state key="normal" title="Capture new photo">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="TakePhoto" destination="sXJ-xl-Q4K" eventType="touchUpInside" id="p4c-hb-DQJ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhQ-4L-qK6">
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -48,7 +31,24 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="ChooseExistingPhoto" destination="sXJ-xl-Q4K" eventType="touchUpInside" id="Fdi-Y7-aXv"/>
+                                    <action selector="ChooseExistingPhoto" destination="uUE-Mg-g2n" eventType="touchUpInside" id="hpI-Yr-m82"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b72-uG-c8g">
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="8Ov-6Z-l9G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="13"/>
+                                <state key="normal" title="Capture new photo">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="TakePhoto" destination="uUE-Mg-g2n" eventType="touchUpInside" id="dM4-8g-EII"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JZ-YX-dke">
@@ -107,24 +107,23 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mhQ-4L-qK6" firstAttribute="top" secondItem="776-cX-CDC" secondAttribute="top" constant="184" id="00L-8b-AE7"/>
-                            <constraint firstAttribute="trailing" secondItem="kX7-n8-NRd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="2Jx-ST-ZHQ"/>
                             <constraint firstItem="c4z-zy-9la" firstAttribute="trailing" secondItem="776-cX-CDC" secondAttribute="trailing" type="default" id="2b2-PH-lhn"/>
-                            <constraint firstItem="c4z-zy-9la" firstAttribute="top" secondItem="776-cX-CDC" secondAttribute="top" constant="44" id="7nR-Gk-6ic"/>
+                            <constraint firstItem="b72-uG-c8g" firstAttribute="leading" secondItem="776-cX-CDC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7l6-5x-AVo"/>
                             <constraint firstAttribute="trailing" secondItem="mhQ-4L-qK6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="B4l-7G-Phc"/>
                             <constraint firstAttribute="bottom" secondItem="0JZ-YX-dke" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="E4w-Mv-3ag"/>
                             <constraint firstItem="fdm-7m-Qbc" firstAttribute="baseline" secondItem="B4p-AV-c17" secondAttribute="baseline" type="user" id="IdJ-L2-4Rl"/>
-                            <constraint firstItem="B4p-AV-c17" firstAttribute="leading" secondItem="776-cX-CDC" secondAttribute="leading" constant="154" id="K4v-XY-zW7"/>
                             <constraint firstItem="c4z-zy-9la" firstAttribute="leading" secondItem="776-cX-CDC" secondAttribute="leading" type="default" id="Qxy-aW-R8A"/>
                             <constraint firstItem="fdm-7m-Qbc" firstAttribute="leading" secondItem="776-cX-CDC" secondAttribute="leading" constant="17" id="R6V-bZ-FjQ"/>
-                            <constraint firstItem="kX7-n8-NRd" firstAttribute="leading" secondItem="776-cX-CDC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="RGS-vK-8VL"/>
+                            <constraint firstItem="B4p-AV-c17" firstAttribute="leading" secondItem="776-cX-CDC" secondAttribute="leading" constant="154" id="UoY-Th-hw4"/>
+                            <constraint firstAttribute="bottom" secondItem="b72-uG-c8g" secondAttribute="bottom" constant="111" id="WTP-MU-OX4"/>
                             <constraint firstItem="fdm-7m-Qbc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="776-cX-CDC" secondAttribute="top" constant="8" type="user" id="b2h-El-1uX"/>
                             <constraint firstAttribute="bottom" secondItem="Atu-iS-ENu" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="b9w-su-U45"/>
                             <constraint firstAttribute="trailing" secondItem="0JZ-YX-dke" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dtB-cu-eSi"/>
+                            <constraint firstItem="c4z-zy-9la" firstAttribute="top" secondItem="776-cX-CDC" secondAttribute="top" constant="76" id="ekU-bH-kH7"/>
                             <constraint firstItem="mhQ-4L-qK6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="776-cX-CDC" secondAttribute="top" constant="18" type="user" id="emV-fa-NkV"/>
-                            <constraint firstItem="kX7-n8-NRd" firstAttribute="baseline" secondItem="mhQ-4L-qK6" secondAttribute="baseline" type="default" id="fMM-Ak-SDE"/>
                             <constraint firstItem="mhQ-4L-qK6" firstAttribute="leading" secondItem="776-cX-CDC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="h4F-qK-GZB"/>
                             <constraint firstItem="B4p-AV-c17" firstAttribute="top" secondItem="776-cX-CDC" secondAttribute="top" constant="8" type="user" id="hho-Iv-i6K"/>
-                            <constraint firstAttribute="bottom" secondItem="kX7-n8-NRd" secondAttribute="bottom" constant="109" id="o3e-bL-Gwp"/>
+                            <constraint firstAttribute="trailing" secondItem="b72-uG-c8g" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="oqn-fx-Roc"/>
                             <constraint firstItem="Atu-iS-ENu" firstAttribute="leading" secondItem="fdm-7m-Qbc" secondAttribute="leading" type="default" id="r2W-yh-tzd"/>
                             <constraint firstItem="fdm-7m-Qbc" firstAttribute="top" secondItem="776-cX-CDC" secondAttribute="top" constant="8" type="user" id="tg7-wj-vNV"/>
                         </constraints>
@@ -133,9 +132,9 @@
                     <navigationItem key="navigationItem" id="1xh-KA-HYi"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="existingPhotoButton" destination="mhQ-4L-qK6" id="xc9-Xi-nq2"/>
+                        <outlet property="existingPhotoButton" destination="mhQ-4L-qK6" id="50q-sp-L5f"/>
                         <outlet property="imageView" destination="c4z-zy-9la" id="myP-ir-fLP"/>
-                        <outlet property="photoNewButton" destination="kX7-n8-NRd" id="wpg-vy-Hix"/>
+                        <outlet property="photoNewButton" destination="b72-uG-c8g" id="ndf-b6-5RR"/>
                         <outlet property="pickPhotoButton" destination="0JZ-YX-dke" id="EsF-lA-0D3"/>
                         <outlet property="returnButton" destination="Atu-iS-ENu" id="fEn-ii-oJt"/>
                     </connections>
@@ -198,7 +197,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1g0-vF-lKI">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="124" type="user" id="BAG-3v-Ftl"/>
+                                    <constraint firstAttribute="height" constant="81" id="KMK-on-ypJ"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="11"/>
@@ -209,21 +208,21 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SDH-tR-LEY" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="171" id="0nW-0b-3KM"/>
-                            <constraint firstItem="SDH-tR-LEY" firstAttribute="centerX" secondItem="Im8-sE-vaP" secondAttribute="centerX" type="default" id="4Ia-5O-lHb"/>
+                            <constraint firstItem="Im8-sE-vaP" firstAttribute="centerX" secondItem="FRH-gA-QMb" secondAttribute="centerX" type="default" id="8Ha-NP-0WO"/>
                             <constraint firstItem="1g0-vF-lKI" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="101" id="8Qj-uS-2gQ"/>
                             <constraint firstItem="r1P-2f-CMl" firstAttribute="top" secondItem="e96-gt-rTd" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="H2E-h5-qrF"/>
                             <constraint firstAttribute="bottom" secondItem="Im8-sE-vaP" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="J3s-Wb-tL8"/>
                             <constraint firstItem="r1P-2f-CMl" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="73" id="MKv-hc-o0h"/>
-                            <constraint firstItem="r1P-2f-CMl" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="39" id="Oy6-YN-DZZ"/>
                             <constraint firstItem="1g0-vF-lKI" firstAttribute="trailing" secondItem="r1P-2f-CMl" secondAttribute="trailing" type="default" id="Usc-xI-FaF"/>
                             <constraint firstItem="Mt5-OV-Lgn" firstAttribute="trailing" secondItem="e96-gt-rTd" secondAttribute="trailing" type="default" id="XoZ-2r-QHJ"/>
                             <constraint firstItem="e96-gt-rTd" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cJ9-Mm-Qoc"/>
                             <constraint firstItem="Mt5-OV-Lgn" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dLX-Ea-aUj"/>
                             <constraint firstItem="Mt5-OV-Lgn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FRH-gA-QMb" secondAttribute="top" constant="75" type="user" id="g4d-v2-vbp"/>
-                            <constraint firstItem="Im8-sE-vaP" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="88" id="mWR-fO-8Z7"/>
+                            <constraint firstItem="SDH-tR-LEY" firstAttribute="leading" secondItem="FRH-gA-QMb" secondAttribute="leading" constant="139" id="jzd-nk-D2y"/>
                             <constraint firstItem="1g0-vF-lKI" firstAttribute="leading" secondItem="r1P-2f-CMl" secondAttribute="leading" type="default" id="nsA-yR-7Zs"/>
                             <constraint firstItem="1g0-vF-lKI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FRH-gA-QMb" secondAttribute="top" constant="101" type="user" id="t2r-tZ-oCq"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Im8-sE-vaP" secondAttribute="bottom" constant="20" type="user" id="vdQ-xJ-hea"/>
+                            <constraint firstItem="e96-gt-rTd" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="3" id="vhj-9Q-45l"/>
                             <constraint firstItem="Mt5-OV-Lgn" firstAttribute="top" secondItem="FRH-gA-QMb" secondAttribute="top" constant="75" id="yBl-x9-Kou"/>
                         </constraints>
                     </view>

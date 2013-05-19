@@ -29,6 +29,7 @@
     self.pickPhotoButton.layer.cornerRadius = 8.0f;
     self.photoNewButton.layer.cornerRadius = 8.0f;
     self.existingPhotoButton.layer.cornerRadius = 8.0f;
+    self.returnButton.layer.cornerRadius = 8.0f;
 }
 
 
