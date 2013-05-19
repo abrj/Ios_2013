@@ -127,8 +127,6 @@
 
 -(void) getLocationFrom:(UIImage *)image
 {
-
-    
     NSData *jpegData = UIImageJPEGRepresentation(image, 1.0);
     CGImageSourceRef imageData= CGImageSourceCreateWithData((__bridge CFDataRef)jpegData, NULL);    //The __bridge is used to cast the NSdata into CFDataRef
     NSDictionary* props = (__bridge NSDictionary*) CGImageSourceCopyPropertiesAtIndex(imageData, 0, NULL);
@@ -147,7 +145,6 @@
         if(![self.titleText.text length] == 0){
             NSString *desc = self.descriptionText.text;
             NSString *tag = @"iosProject2013";
-            NSString *loc = self.locationText.text;
             self.token = [FlickrAuthentication getToken];
             NSString *uploadSig = [FlickrAuthentication getSignatureKey:[NSString stringWithFormat:@"%@api_key%@auth_token%@description%@tags%@", SECRECT_KEY, API_KEY, self.token, desc, tag]];
             

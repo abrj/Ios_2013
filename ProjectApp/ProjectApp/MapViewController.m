@@ -241,9 +241,9 @@ typedef enum AnnotationIndex : NSUInteger
 -(void)addRefreshControlToTableView
 {
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self.tableView action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
-    //self.refreshControl = refreshControl;
+    self.refreshControl = refreshControl;
     
     //ADD THE REFRESHCONTROL TO THE PROPERTY HERE
     
