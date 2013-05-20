@@ -223,6 +223,13 @@ typedef enum AnnotationIndex : NSUInteger
 {
     // Get the annotation associated with the cell clicked on.
     PhotoAnnotation *annotation = self.mapAnnotations[indexPath.row];
+    
+    // Zooming out for a nice animation:
+    MKCoordinateRegion zoomedOutRegion = self.mapView.region;
+    zoomedOutRegion.span.latitudeDelta *= 5;
+    zoomedOutRegion.span.longitudeDelta *= 5;
+    [self.mapView setRegion:zoomedOutRegion animated:YES];
+    
     // Move the map to the region showing where the photo is located.
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 500, 500);
     [self.mapView setRegion:region animated:YES];
