@@ -17,7 +17,6 @@
 		0404E89E173A4B99008B2946 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0404E89D173A4B99008B2946 /* Default-568h@2x.png */; };
 		0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */; };
 		0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8BE173A538A008B2946 /* NewPhotoViewController.m */; };
-		0404E8D2173A8A62008B2946 /* PhotoListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E8D1173A8A61008B2946 /* PhotoListTVC.m */; };
 		0404E944173C27F4008B2946 /* PhotoUploaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E943173C27F4008B2946 /* PhotoUploaderVC.m */; };
 		0404E947173C2877008B2946 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0404E946173C2877008B2946 /* AppDelegate.m */; };
 		0433342617464C5A00021A06 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6D9A173BA95F0026E0D3 /* ImageIO.framework */; };
@@ -40,7 +39,6 @@
 		06CD6DA5173BA99E0026E0D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6DA4173BA99E0026E0D3 /* QuartzCore.framework */; };
 		06CD6DA7173BA9A30026E0D3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6DA6173BA9A30026E0D3 /* SystemConfiguration.framework */; };
 		06CD6DAA173BAC060026E0D3 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DA9173BAC060026E0D3 /* MapViewController.m */; };
-		06CD6DAD173BAFCA0026E0D3 /* PhotoStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */; };
 		06CD6DB0173BEE240026E0D3 /* PhotoDescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DAF173BEE240026E0D3 /* PhotoDescriptionVC.m */; };
 		06CD6DB2173D62160026E0D3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CD6DB1173D62160026E0D3 /* MapKit.framework */; };
 		06CD6DB6173D99A70026E0D3 /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CD6DB5173D99A70026E0D3 /* PhotoAnnotation.m */; };
@@ -63,8 +61,6 @@
 		0404E8B3173A4CD0008B2946 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		0404E8BD173A538A008B2946 /* NewPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPhotoViewController.h; path = ../NewPhotoViewController.h; sourceTree = "<group>"; };
 		0404E8BE173A538A008B2946 /* NewPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPhotoViewController.m; path = ../NewPhotoViewController.m; sourceTree = "<group>"; };
-		0404E8D0173A8A61008B2946 /* PhotoListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoListTVC.h; path = ../PhotoListTVC.h; sourceTree = "<group>"; };
-		0404E8D1173A8A61008B2946 /* PhotoListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoListTVC.m; path = ../PhotoListTVC.m; sourceTree = "<group>"; };
 		0404E942173C27F4008B2946 /* PhotoUploaderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoUploaderVC.h; sourceTree = "<group>"; };
 		0404E943173C27F4008B2946 /* PhotoUploaderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUploaderVC.m; sourceTree = "<group>"; };
 		0404E945173C2877008B2946 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,8 +89,6 @@
 		06CD6DA6173BA9A30026E0D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		06CD6DA8173BAC060026E0D3 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		06CD6DA9173BAC060026E0D3 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		06CD6DAB173BAFCA0026E0D3 /* PhotoStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoStorage.h; sourceTree = "<group>"; };
-		06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoStorage.m; sourceTree = "<group>"; };
 		06CD6DAE173BEE240026E0D3 /* PhotoDescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDescriptionVC.h; sourceTree = "<group>"; };
 		06CD6DAF173BEE240026E0D3 /* PhotoDescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDescriptionVC.m; sourceTree = "<group>"; };
 		06CD6DB1173D62160026E0D3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -180,8 +174,6 @@
 			children = (
 				06CD6DB3173D994F0026E0D3 /* Annotation */,
 				0404E8C0173A5394008B2946 /* ViewControllers */,
-				06CD6DAB173BAFCA0026E0D3 /* PhotoStorage.h */,
-				06CD6DAC173BAFCA0026E0D3 /* PhotoStorage.m */,
 				04428C56173CE7C20088A376 /* smileyImage.jpeg */,
 				0404E8D8173A8ED5008B2946 /* Storyboards */,
 				0404E8B0173A4CD0008B2946 /* FlickrFetcher */,
@@ -225,8 +217,6 @@
 				06CD6DA9173BAC060026E0D3 /* MapViewController.m */,
 				0404E942173C27F4008B2946 /* PhotoUploaderVC.h */,
 				0404E943173C27F4008B2946 /* PhotoUploaderVC.m */,
-				0404E8D0173A8A61008B2946 /* PhotoListTVC.h */,
-				0404E8D1173A8A61008B2946 /* PhotoListTVC.m */,
 				06BDC1BA173A923F00611447 /* ImageViewController.h */,
 				06BDC1BB173A923F00611447 /* ImageViewController.m */,
 				0404E8BD173A538A008B2946 /* NewPhotoViewController.h */,
@@ -325,10 +315,8 @@
 				0404E894173A4B99008B2946 /* main.m in Sources */,
 				0404E8B4173A4CD0008B2946 /* FlickrFetcher.m in Sources */,
 				0404E8BF173A538A008B2946 /* NewPhotoViewController.m in Sources */,
-				0404E8D2173A8A62008B2946 /* PhotoListTVC.m in Sources */,
 				06BDC1BC173A923F00611447 /* ImageViewController.m in Sources */,
 				06CD6DAA173BAC060026E0D3 /* MapViewController.m in Sources */,
-				06CD6DAD173BAFCA0026E0D3 /* PhotoStorage.m in Sources */,
 				06CD6DB0173BEE240026E0D3 /* PhotoDescriptionVC.m in Sources */,
 				0404E944173C27F4008B2946 /* PhotoUploaderVC.m in Sources */,
 				0404E947173C2877008B2946 /* AppDelegate.m in Sources */,

@@ -156,9 +156,8 @@ typedef enum AnnotationIndex : NSUInteger
             pinView.canShowCallout = YES;
             
             // Add a detail disclosure button to the callout.
-            UIButton* rightButton = [UIButton buttonWithType:
-                                     UIButtonTypeDetailDisclosure];
-            [rightButton addTarget:nil action:nil                   forControlEvents:UIControlEventTouchUpInside];
+            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
             pinView.rightCalloutAccessoryView = rightButton;
         }
         else
