@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXJ-xl-Q4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1165" y="40"/>
+            <point key="canvasLocation" x="1291" y="-46"/>
         </scene>
         <!--Photo UploaderVC - Upload Photo-->
         <scene sceneID="wGW-Fm-cyr">
@@ -236,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RB9-LT-Ahj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692" y="40"/>
+            <point key="canvasLocation" x="1818" y="-46"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9mN-A1-V8P">
@@ -255,7 +255,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60n-Xa-LcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="389"/>
+            <point key="canvasLocation" x="239" y="303"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="nUz-lN-5HH">
@@ -316,7 +316,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1692" y="693"/>
+            <point key="canvasLocation" x="1818" y="607"/>
         </scene>
         <!--Photo DescriptionVC-->
         <scene sceneID="D6e-Rc-jXs">
@@ -331,7 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8e4-aF-hgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2204" y="693"/>
+            <point key="canvasLocation" x="2330" y="607"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="BNa-k4-mwr">
@@ -405,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBh-4V-dL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1165" y="693"/>
+            <point key="canvasLocation" x="1291" y="607"/>
         </scene>
         <!--Navigation Controller - Upload Photo-->
         <scene sceneID="Duy-FS-w8m">
@@ -424,7 +424,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3G1-hd-4HD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="40"/>
+            <point key="canvasLocation" x="765" y="-46"/>
         </scene>
         <!--Navigation Controller - Photo Overview-->
         <scene sceneID="0TF-co-Zot">
@@ -443,7 +443,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eid-K0-heQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="693"/>
+            <point key="canvasLocation" x="765" y="607"/>
         </scene>
     </scenes>
     <resources>
@@ -456,7 +456,6 @@
             <relationships>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="txtScrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
         <class className="MapViewController" superclassName="UIViewController">

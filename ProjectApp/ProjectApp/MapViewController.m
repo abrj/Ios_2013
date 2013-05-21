@@ -62,7 +62,6 @@ typedef enum AnnotationIndex : NSUInteger
     
     //Adds the refreshControl
     [self addRefreshControlToTableView];
-
 }
 
 
@@ -232,6 +231,7 @@ typedef enum AnnotationIndex : NSUInteger
     
     // Move the map to the region showing where the photo is located.
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 500, 500);
+    
     [self.mapView setRegion:region animated:YES];
 }
 

@@ -29,8 +29,6 @@
 
 + (NSArray *)getAllPhotos
 {
-    // Ved ændring af user_id check altid @ før N. Det skrives om til %40 som ikke virker. 
-    
     NSString *request = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=iosProject2013&format=rest", API_KEY];
     
     return [[self executeFlickrFetch:request] valueForKeyPath:@"photos.photo"];
